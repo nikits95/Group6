@@ -63,7 +63,7 @@ class Questionnaire(Frame):
 		print(Questionnaire.answerList)
 		CalResults(Questionnaire.answerList,"H&M")
 		#root.destroy()
-s
+		
 	def getAnswers(self):
 		return Questionnaire.answerList
 
