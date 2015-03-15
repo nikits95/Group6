@@ -7,7 +7,6 @@ class home(Frame):
 
 	def createHomeButtons(self):
 		#Creates Tk buttons
-		#helloworld
 		#One that leads to the first questionnaire
 		#The other that will move to the COMSC part
 
