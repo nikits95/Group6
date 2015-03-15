@@ -29,4 +29,4 @@ class CalResults:
 				numTimes+= 1
 		return numTimes
 
-CalResults([2,4,2,1], "H&M")
+#CalResults([2,4,2,1], "H&M") - For testing purposes
