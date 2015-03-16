@@ -57,14 +57,14 @@ class Questionnaire(Frame):
 		Q3.grid(row=15, column=1, columnspan=4,sticky=W,padx=50,pady=10)
 
 		self.varQ3 = IntVar()
-		R1Q3 = Radiobutton(self, text="Start watching other team’s solutions on the problem to help you with your decision.", variable=self.varQ3, value=2)
+		R1Q3 = Radiobutton(self, text="Start watching other team’s solutions on the problem to help you with your decision.", variable=self.varQ3, value=1)#(Reflector)
 		R1Q3.grid(row=16, column= 2, sticky=W, padx=100)
 		R1Q3.select()
-		R2Q3 = Radiobutton(self,text="Start a discussion about the language with your team members.", variable= self.varQ3)
+		R2Q3 = Radiobutton(self,text="Start a discussion about the language with your team members.", variable= self.varQ3, value=4)#(Activist)
 		R2Q3.grid(row=17, column= 2, sticky=W, padx=100)
-		R3Q3 = Radiobutton(self, text="Think more about the algorithms which will be needed in the project to get the most efficient language", variable= self.varQ3, value=4)
+		R3Q3 = Radiobutton(self, text="Think more about the algorithms which will be needed in the project to get the most efficient language", variable= self.varQ3, value=2)#(Pragmatist)
 		R3Q3.grid(row=18, column= 2, sticky=W, padx=100)
-		R4Q3 = Radiobutton(self, text="Research what the last year students had used and pick the language with the most successful projects.", variable= self.varQ3, value=1)
+		R4Q3 = Radiobutton(self, text="Research what the last year students had used and pick the language with the most successful projects.", variable= self.varQ3, value=3)
 		R4Q3.grid(row=19, column= 2, sticky=W, padx=100)
 
 		Q4 = Label(self,text="You have just received your first web applications coursework brief and you decide to start developing your website, \nyou wanted to try positioning items in your website although you have not fully gone through it in class, \nyou’re friends told you positioning items in the site is very hard, do you:")
