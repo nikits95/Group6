@@ -18,8 +18,8 @@ class CalResults:
 			occurance.update({i:results})
 		print(occurance)
 
-		for key, item in occurance.items():
-			print(key, item)
+		#for key, item in occurance.items():
+			#print(key, item)
 
 	def numberCounter(self,data,number):
 		numTimes = 0
