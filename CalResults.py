@@ -2,16 +2,20 @@ class CalResults:
 	def __init__(self, data,typeQ):
 		self.data = data
 		self.typeQ = typeQ
-		#print("The inforamton is : " + str(self.data))
 		if self.typeQ == "H&M":
 			self.honeyMumford(self.data)
 		else:
 			self.VARK(self.data)
 
-	def VARK(self,data):
-		print("")
-
 	def honeyMumford(self, data):
+		results = self.calculateOccurance(data)
+		self.selectTypeHoneyStlye(results)
+
+	def VARK(self,data):
+		results = self.calculateOccurance(data)
+		self.selectTypeVARKStlye(results)
+
+	def calculateOccurance(self, data):
 		occurance = []
 		for i in [1,2,3,4]:
 			results = self.numberCounter(data,i)
@@ -24,7 +28,7 @@ class CalResults:
 				numMax = i
 
 		typeOfLearningStyle = numMax+1
-		self.selectTypeHoneyStlye(typeOfLearningStyle)
+		return typeOfLearningStyle
 	
 	def selectTypeHoneyStlye(self, number):
 		if number == 1:
@@ -36,6 +40,16 @@ class CalResults:
 		else:
 			print("Activist")
 
+	def selectTypeVARKStlye(self, number):
+		if number == 1:
+			print("Visual") #will change them to return after testing
+		elif number == 2:
+			print("Kinesthetic")
+		elif number == 3:
+			print("Aural")
+		else:
+			print("Reading")
+
 	def numberCounter(self,data,number):
 		numTimes = 0
 		for i in data:
@@ -43,4 +57,5 @@ class CalResults:
 				numTimes+= 1
 		return numTimes
 
-#CalResults([2,4,4,2,1,2,2,1], "H&M")
+CalResults([2,4,4,2,1,2,2,1], "H&M") #for testing, comment out if in use
+CalResults([2,4,4,2,1,2,2,1], "VARK")
