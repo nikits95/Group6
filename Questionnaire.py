@@ -22,7 +22,7 @@ class Questionnaire(Frame):
 	def createQuestions(self):
 		#creating question1
 		self.varQ1 = IntVar
-		Q1 = Label(self,text="When Learning What an Object is in object orientated programming do you prefer :",font=("BOLD",13))
+		Q1 = Label(self,text="When Learning What an Object is in object orientated programming do you prefer :")
 		Q1.grid(row=1, column=1, columnspan=4,sticky=W,padx=50,pady=10)
 
 		#creating question1 answers
@@ -38,7 +38,7 @@ class Questionnaire(Frame):
 		R4Q1.grid(row=5, column= 2, sticky=W, padx=100)
 
 		#creating question2
-		Q2 = Label(self,text="When given a task to develop a piece of software for an item of coursework, do you find it best to:",font=("BOLD",13))
+		Q2 = Label(self,text="When given a task to develop a piece of software for an item of coursework, do you find it best to:")
 		Q2.grid(row=10, column=1, columnspan=4,sticky=W,padx=50,pady=10)
 
 		#creating question1 answers
@@ -53,21 +53,21 @@ class Questionnaire(Frame):
 		R4Q2 = Radiobutton(self, text="Solving the problem over a period of time in small sections", variable= self.varQ2, value=2)#(Pragmatist)
 		R4Q2.grid(row=14, column= 2, sticky=W, padx=100)
 
-		Q3 = Label(self,text="As a team you are about to start a software project for your new module and you need to \ncome up with a proper computer language which you will use.In the team meeting you will:",font=("BOLD",13))
+		Q3 = Label(self,text="As a team you are about to start a software project for your new module and you need to come up with\n a proper computer language which you will use.In the team meeting you will:")
 		Q3.grid(row=15, column=1, columnspan=4,sticky=W,padx=50,pady=10)
 
 		self.varQ3 = IntVar()
 		R1Q3 = Radiobutton(self, text="Start watching other team’s solutions on the problem to help you with your decision.", variable=self.varQ3, value=2)
 		R1Q3.grid(row=16, column= 2, sticky=W, padx=100)
 		R1Q3.select()
-		R2Q3 = Radiobutton(self,text="Start a discussion about the language with your team members.", variable= self.varQ3, value=3)
+		R2Q3 = Radiobutton(self,text="Start a discussion about the language with your team members.", variable= self.varQ3)
 		R2Q3.grid(row=17, column= 2, sticky=W, padx=100)
 		R3Q3 = Radiobutton(self, text="Think more about the algorithms which will be needed in the project to get the most efficient language", variable= self.varQ3, value=4)
 		R3Q3.grid(row=18, column= 2, sticky=W, padx=100)
 		R4Q3 = Radiobutton(self, text="Research what the last year students had used and pick the language with the most successful projects.", variable= self.varQ3, value=1)
 		R4Q3.grid(row=19, column= 2, sticky=W, padx=100)
 
-		Q4 = Label(self,text="You have just received your first web applications coursework brief and you decide to start\n developing your website, you wanted to try positioning items in your website although you\n have not fully gone through it in class, you’re friends told you positioning items in the site \nis very hard, do you:",font=("BOLD",13))
+		Q4 = Label(self,text="You have just received your first web applications coursework brief and you decide to start developing your website, \nyou wanted to try positioning items in your website although you have not fully gone through it in class, \nyou’re friends told you positioning items in the site is very hard, do you:")
 		Q4.grid(row=20, column=1, columnspan=4,sticky=W,padx=50,pady=10)
 
 		self.varQ4 = IntVar()
@@ -81,7 +81,7 @@ class Questionnaire(Frame):
 		R4Q4 = Radiobutton(self, text="Wait until you fully cover positioning in class and work on what you did in class", variable= self.varQ4, value=1)#(Reflector)
 		R4Q4.grid(row=24, column= 2, sticky=W, padx=100)
 
-		Q5 = Label(self,text="When learning new mathematical theory, do you prefer?",font=("BOLD",13))
+		Q5 = Label(self,text="When learning new mathematical theory, do you prefer?")
 		Q5.grid(row=25, column=1, columnspan=4,sticky=W,padx=50,pady=10)
 
 		self.varQ5 = IntVar()
