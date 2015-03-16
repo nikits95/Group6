@@ -1,3 +1,5 @@
+import displayStyle
+
 class CalResults:
 	def __init__(self, data,typeQ):
 		self.data = data
@@ -9,11 +11,13 @@ class CalResults:
 
 	def honeyMumford(self, data):
 		results = self.calculateOccurance(data)
-		self.selectTypeHoneyStlye(results)
+		learningType = self.selectTypeHoneyStlye(results)
+		displayStyle.main(learningType, "Honey & Mumford")
 
 	def VARK(self,data):
 		results = self.calculateOccurance(data)
-		self.selectTypeVARKStlye(results)
+		learningType = self.selectTypeVARKStlye(results)
+		displayStyle.main(learningType, "VARK")
 
 	def calculateOccurance(self, data):
 		occurance = []
@@ -32,23 +36,23 @@ class CalResults:
 	
 	def selectTypeHoneyStlye(self, number):
 		if number == 1:
-			print("Reflector")
+			return "Reflector"
 		elif number == 2:
-			print("Pragmatist")
+			return "Pragmatist"
 		elif number == 3:
-			print("Theorist")
+			return "Theorist"
 		else:
-			print("Activist")
+			return "Activist"
 
 	def selectTypeVARKStlye(self, number):
 		if number == 1:
-			print("Visual") #will change them to return after testing
+			return "Visual" #will change them to return after testing
 		elif number == 2:
-			print("Kinesthetic")
+			return "Kinesthetic"
 		elif number == 3:
-			print("Aural")
+			return "Aural"
 		else:
-			print("Reading")
+			return "Reading"
 
 	def numberCounter(self,data,number):
 		numTimes = 0
@@ -57,5 +61,5 @@ class CalResults:
 				numTimes+= 1
 		return numTimes
 
-CalResults([2,4,4,2,1,2,2,1], "H&M") #for testing, comment out if in use
-CalResults([2,4,4,2,1,2,2,1], "VARK")
+#CalResults([2,4,4,2,1,2,2,1], "H&M") #for testing, comment out if in use
+#CalResults([2,4,4,2,1,2,2,1], "VARK")
