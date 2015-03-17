@@ -31,7 +31,7 @@ class Home(Frame):
 
     
     #runs through a for loop of the different options that the student can pick
-    for item in ["CS", "CS with", "BIS", "SE", "Joints",""]: 
+    for item in ["CS", "CS with", "BIS", "SE", "Joints"]: 
       self.listProg.insert(END, item)
     self.listProg.selection_set(END)
 
