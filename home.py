@@ -3,17 +3,16 @@ from tkinter import *
 class Home(Frame):
   def __init__(self,master):
     Frame.__init__(self,master)
-    alable = Label(self,text="Information")
+    alable = Label(self,text="Home")
     alable.grid(row=1, column=1)
-    self.grid()
     self.create_degree_program()
     self.create_yearOfStudy()
-    self.create_button()
+    self.createButton()
+
 
   def get_information(self):
-    #return str(self.varYear.get()), str(self.listProg.get(self.listProg.curselection()))
-    print(str(self.varYear.get()), str(self.listProg.get(self.listProg.curselection())))
-    Home.grid_forget(self)
+    #return "Tim","BIS"
+    return str(self.varYear.get()), str(self.listProg.get(self.listProg.curselection()))
 
   def create_degree_program(self):
     lblDegree = Label(self, text="Degree Program")
@@ -24,9 +23,6 @@ class Home(Frame):
     self.listProg.configure(yscrollcommand=scroll.set)
     self.listProg.grid(row=3, column=1, sticky=NE, rowspan=3) 
     scroll.grid(row=3, column=4, sticky=W)
-    emptyLabel = Label(self) #used to make a break between listboxes
-    emptyLabel.grid(row=6,column=1)
-
     
     for item in ["CS", "CS with", "BIS", "SE", "Joints"]: 
       self.listProg.insert(END, item)
@@ -47,13 +43,23 @@ class Home(Frame):
     R4 = Radiobutton(self, text="Year4", variable= self.varYear, value="Year4") 
     R4.grid(row=11, column= 1, sticky=W, padx=100)
 
-  def create_button(self):
-    btn = Button(self, text="Start Questionnaire", command=self.get_information)
-    btn.grid(row=12, column=1)
+  def createButton(self):
+    btn = Button(self, text="Submit", command=self.get_information)
+    btn.grid(row=12)
+
+##### Test code
+
+def test_button(f):
+    (a,b) = f.get_information()
+    print(a,b)
 
 def main():
   window = Tk()
-  app = Home(window)
+  f1 = Information(window)
+  f1.pack(side = TOP, padx =20, pady =20)
+  btn = Button( window , text = 'Choose',
+    command = lambda: test_button(f1))
+  btn.pack(side = BOTTOM, padx =20, pady =20)
   window.mainloop()
 
 if __name__ == '__main__':
