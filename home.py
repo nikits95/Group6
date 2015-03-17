@@ -47,24 +47,11 @@ class Home(Frame):
     R4 = Radiobutton(self, text="Year4", variable= self.varYear, value="Year4") 
     R4.grid(row=11, column= 1, sticky=W, padx=100)
 
-<<<<<<< HEAD
-  def createButton(self):
-    btn = Button(self, text="Submit", command=self.get_information)
-    btn.grid(row=12)
-
 ##### Test code
 
 def test_button(f):
     (a,b) = f.get_information()
     print(a,b)
-=======
-  def create_button(self):
-    btn = Button(self, text="Start Questionnaire", command=self.get_information)
-    btn.grid(row=12, column=1)
-    #Should there be two buttons to select which questionnnire they will choose?
-    #btn = Button(self, text=VARK Questionnaire", command=self.get_information)
-    #btn.grid(row=14, column=1)
->>>>>>> origin/master
 
 def main():
   window = Tk()
