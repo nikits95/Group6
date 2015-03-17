@@ -33,6 +33,7 @@ class Home(Frame):
     #runs through a for loop of the different options that the student can pick
     for item in ["CS", "CS with", "BIS", "SE", "Joints"]: 
       self.listProg.insert(END, item)
+    #the last result is automatically selected if the student hasn't selected an option in the list box
     self.listProg.selection_set(END)
 
   def create_yearOfStudy(self):
