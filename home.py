@@ -53,6 +53,9 @@ class Home(Frame):
   def create_button(self):
     btn = Button(self, text="Start Questionnaire", command=self.get_information)
     btn.grid(row=12, column=1)
+    #Should there be two buttons to select which questionnnire they will choose?
+    #btn = Button(self, text=VARK Questionnaire", command=self.get_information)
+    #btn.grid(row=14, column=1)
 
 def main():
   window = Tk()
