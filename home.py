@@ -16,9 +16,11 @@ class Home(Frame):
     Home.grid_forget(self)
 
   def create_degree_program(self):
+    #creates a label to go with the listbox
     lblDegree = Label(self, text="Degree Program")
     lblDegree.grid(row=3, column=0, sticky=NE)
-
+    
+    #creates a Listbox with a scrollbar to allow the student to select a degree
     self.listProg = Listbox(self, height= 3)
     scroll = Scrollbar(self, command= self.listProg.yview) 
     self.listProg.configure(yscrollcommand=scroll.set)
@@ -28,7 +30,8 @@ class Home(Frame):
     emptyLabel.grid(row=6,column=1)
 
     
-    for item in ["CS", "CS with", "BIS", "SE", "Joints"]: 
+    #runs through a for loop of the different options that the student can pick
+    for item in ["CS", "CS with", "BIS", "SE", "Joints",""]: 
       self.listProg.insert(END, item)
     self.listProg.selection_set(END)
 
