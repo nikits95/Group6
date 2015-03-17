@@ -1,7 +1,10 @@
 from Choice import *
 from Question import *
+from Application import * 
 from Questionnaire import * 
 from tkinter import *
+
+# Creating Questionnaire 1 ********************************************
 
 Questionnaire1 = Questionnaire(1, "Vark")
 
@@ -72,41 +75,75 @@ newQuestion.addChoice(newChoice)
 Questionnaire1.addQuestion(newQuestion)
 
 
-print("")
-print("")
-Questionnaire1.printQuestionnaire()
-print("")
 
-class Application(Frame):
 
-    def nextQ(self, root, frame, i):
-        frame.destroy()
-        self.createWidgets(root, i)
+# Creating Questionnaire 2 ********************************************
 
-    def createWidgets(self, root, i):
-        self.frame = Frame(root)
-        self.frame.pack()
-        self.question = Questionnaire1.Questions[i]
-        self.label = Label(self.frame, justify="left", text=(str(self.question.QuestionId) + ". " + self.question.QuestionContent + "\n"))
-        self.label.pack(side="top", anchor="w")
-        for choice in self.question.Choices:
-            self.r = Radiobutton(self.frame, text=(str(choice.ChoiceId) + ". " + choice.ChoiceContent + "\n"), variable=self.question.QuestionId, value=choice.ChoiceId)
-            self.r.select()
-            self.r.pack(side="top", anchor="w", padx=100)
-        print("a")
-        self.b = Button(self.frame, text="Next", command=lambda: self.nextQ(root, self.frame, i+1))
-        self.b.pack()
-        self.label.pack()
-        self.label.bind("<1>", quit)
+Questionnaire2 = Questionnaire(2, "HM")
 
-    def __init__(self, master):
-        self.root = master # root is a passed Tk object
-        self.createWidgets(self.root, 0)
+newQuestion = Question(1, "When learning what an Object is in object orientated programming do you prefer:")
+newChoice = Choice("a", "To role-play a scenario.", True)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("b", "Read a book about the subject.", False)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("c", "Be given a relevant case study that applies in a working environment.", False)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("d", "Discuss in a group.", False)
+newQuestion.addChoice(newChoice)
+Questionnaire2.addQuestion(newQuestion)
+
+newQuestion = Question(2, "When given a task to develop a piece of software for an item of coursework, do you find it best to:")
+newChoice = Choice("a", "Go straight into the problem with confidence of solving it.", True)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("b", "Seek out some pre-existing software that is similar and use that as an example.", False)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("c", "Get into a team / group and collectively solve the problem together.", False)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("d", "Solving the problem over a period of time in small sections.", False)
+newQuestion.addChoice(newChoice)
+Questionnaire2.addQuestion(newQuestion)
+
+newQuestion = Question(3, "As a team you are about to start a software project for your new module and you need to come up with a proper computer language which you will use. In the team meeting you will:")
+newChoice = Choice("a", "Start watching other teams solutions on the problem to help you with your decision.", True)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("b", "Start a discussion about the language with your team members.", False)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("c", "Think more about the algorithms which will be needed in the project to get the most efficient language.", False)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("d", "Research what the last year students had used and pick the language with the most successful projects.", False)
+newQuestion.addChoice(newChoice)
+Questionnaire2.addQuestion(newQuestion)
+
+newQuestion = Question(4, "You have just received your first web applications coursework brief and you decide to start developing your website, you wanted to try positioning items in your website although you have not fully gone through it in class, you’re friends told you positioning items in the site is very hard, do you:")
+newChoice = Choice("a", "Read about how you can position items online. ", True)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("b", "Keep on trying positioning items until you succeed.", False)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("c", "Read how positioning items works before you try doing it.", False)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("d", "Wait until you fully cover positioning in class and work on what you did in class later.", False)
+newQuestion.addChoice(newChoice)
+Questionnaire2.addQuestion(newQuestion)
+
+newQuestion = Question(5, "When learning new mathematical theory, do you prefer:")
+newChoice = Choice("a", "Seeing the theory applied in the real world and seeing a purpose for it.", True)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("b", "Get stuck in and start doing lots of practice exercise.", False)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("c", "Learn the proof of the theory.", False)
+newQuestion.addChoice(newChoice)
+newChoice = Choice("d", "Watch someone go through examples and work it out in your head.", False)
+newQuestion.addChoice(newChoice)
+Questionnaire2.addQuestion(newQuestion)
+
+
+
+# Starting the app ********************************************
 
 root = Tk()
 root.geometry("1000x300")
 scrollbar = Scrollbar(root)
 scrollbar.pack(side="right", fill="y")
-app = Application(master=root)
+app = Application(master=root, VQuest=Questionnaire1, HMQuest=Questionnaire2)
 root.mainloop()
 root.destroy()
