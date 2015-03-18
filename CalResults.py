@@ -1,23 +1,18 @@
 import displayStyle
 
 class CalResults:
-	def __init__(self, data,typeQ):
+	def __init__(self, data, learningType):
 		self.data = data
-		self.typeQ = typeQ
-		if self.typeQ == "H&M":
-			self.honeyMumford(self.data)
+		self.type = learningType
+		if learningType == "Honey & Mumford":
+			results = self.calculateOccurance(data)
+			self.learningType = self.selectTypeHoneyStlye(results)
 		else:
-			self.VARK(self.data)
+			results = self.calculateOccurance(data)
+			self.learningType = self.selectTypeVARKStlye(results)	
 
-	def honeyMumford(self, data):
-		results = self.calculateOccurance(data)
-		learningType = self.selectTypeHoneyStlye(results)
-		displayStyle.main(learningType, "Honey & Mumford")
-
-	def VARK(self,data):
-		results = self.calculateOccurance(data)
-		learningType = self.selectTypeVARKStlye(results)
-		displayStyle.main(learningType, "VARK")
+	def getType(self):	
+		return self.learningType
 
 	def calculateOccurance(self, data):
 		occurance = []
@@ -61,5 +56,14 @@ class CalResults:
 				numTimes+= 1
 		return numTimes
 
-#CalResults([2,4,4,2,1,2,2,1], "H&M") #for testing, comment out if in use
-#CalResults([2,4,4,2,1,2,2,1], "VARK")
+
+##### test code ######
+
+def main():
+	test1 = CalResults([2,1,1,3,3,3,3,4], "H&M")
+	print(test1.getType())
+	test2 = CalResults([2,4,4,2,1,2,2,1], "VARK")
+	print(test2.getType())
+
+if __name__ == "__main__":
+	main()
