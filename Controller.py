@@ -34,7 +34,7 @@ class Controller(Frame):
 	def changeCurrentQuestion(self,number, selectedframe, questionnaireType, numberCompleted):
 		if number in range(1,8):
 			if number == 2:
-				a = selectedframe.changeQuestion(2)
+				selectedframe.changeQuestion(2)
 				self.number +=1
 			elif number == 3:
 				selectedframe.changeQuestion(3)
