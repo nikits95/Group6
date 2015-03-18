@@ -12,20 +12,20 @@ class Controller(Frame):
 		self.root = master
 
 		self.cont_frame = Frame(self.root)
-		self.cont_frame.pack(side=TOP, padx=5, pady=5)
+		self.cont_frame.grid(row=1)
 
 		homepage = Home(self.cont_frame)
-		homepage.pack()
+		homepage.grid(row=2)
 
 		self.btnHome = Button(self.cont_frame, text="Submit", command= lambda: self.gettingHomeData(homepage))
-		self.btnHome.pack(side=BOTTOM)
+		self.btnHome.grid(row=3)
 
 	def gettingHomeData(self, currentframe):
 		(yearOfStudy,degreeProgram) = currentframe.get_information()
 		currentframe.destroy()
 
 		honeyMumfordQuestionnaire = honeyMumford(self.cont_frame)
-		honeyMumfordQuestionnaire.pack()
+		honeyMumfordQuestionnaire.grid(row=2)
 
 		self.number = 2
 		self.btnHome["text"] = "Submit" 
@@ -59,9 +59,9 @@ class Controller(Frame):
 
 	def gettingInformation(self,curretnFrame, questionnaireType, completedQuestionnaire):
 		learningType = curretnFrame.getType()
-		#print(learningType)
+		print(learningType)
 		self.results = displayStyle(self.cont_frame, learningType, questionnaireType)
-		self.results.pack()
+		self.results.grid(row=2)
 
 		if completedQuestionnaire == 1:
 			self.btnHome["text"] = "VARK Questionnaire"
@@ -77,12 +77,12 @@ class Controller(Frame):
 		self.number = 2
 		self.btnHome["command"] = lambda: self.changeCurrentQuestion(self.number, varkQues,"VARK",2)
 		varkQues = VARKQ(self.cont_frame)
-		varkQues.pack()
+		varkQues.grid(row=2)
 
 	def sendHome(self):
 		self.results.destroy()
 		homepage = Home(self.cont_frame)
-		homepage.pack(side=LEFT, padx=20, pady=20)
+		homepage.grid(row=2)
 		self.btnHome["text"] = "Submit"
 		self.btnHome["command"] = lambda: self.gettingHomeData(homepage)
 		self.quit()
