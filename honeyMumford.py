@@ -61,7 +61,7 @@ class honeyMumford(Frame):
 			self.R4Q1["value"] = 1
 			self.number = 4
 		elif number == 4:
-			self.question1["text"] = "As a team you are about to start a software project for your new module and you need to \ncome up with a proper computer language which you will use.In the team meeting you will:"
+			self.question1["text"] = "You have just received your first web applications coursework brief and you decide to start \ndeveloping your website, you wanted to try positioning items in your website although you \nhave not fully gone through it in class, you’re friends told you positioning items in the site is very hard,\n do you:"
 			self.R1Q1["text"] = "Wait until you fully cover positioning in class and work on what you did in class later"
 			self.R1Q1["value"] = 1
 			self.R2Q1["text"] = "Keep on trying positioning items until you succeed"
