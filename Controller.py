@@ -59,7 +59,7 @@ class Controller(Frame):
 
 	def gettingInformation(self,curretnFrame, questionnaireType, completedQuestionnaire):
 		learningType = curretnFrame.getType()
-		print(learningType)
+		#print(learningType)
 		self.results = displayStyle(self.cont_frame, learningType, questionnaireType)
 		self.results.grid(row=2)
 
