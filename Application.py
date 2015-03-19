@@ -19,12 +19,12 @@ class Application:
         self.question = quest.Questions[i]
         self.label = Label(self.frame, justify="left", text=(str(self.question.QuestionId) + ". " + self.question.QuestionContent + "\n"))
         self.label.pack(side="top", anchor="w")
-        self.v = StringVar()
+        self.v = IntVar()
         for choice in self.question.Choices:
-            self.r = Radiobutton(self.frame, text=(str(choice.ChoiceId) + ". " + choice.ChoiceContent + "\n"), variable=self.v, value=choice.ChoiceId)
+            self.r = Radiobutton(self.frame, text=(str(choice.ChoiceId) + ". " + choice.ChoiceContent + "\n"), variable=self.v, value=choice.IsTrue)
             self.r.select()
             self.r.pack(side="top", anchor="w", padx=100)
-        self.b = Button(self.frame, text="Next", command=lambda: self.nextQ(root, quest, self.frame, i+1, self.v))
+        self.b = Button(self.frame, text="Next", command=lambda: self.nextQ(root, quest, self.frame, i+1, self.v.get()))
         self.b.pack()
         self.label.pack()
         self.label.bind("<1>", quit)
@@ -42,12 +42,13 @@ class Application:
         self.label.pack()
         self.label.bind("<1>", quit)
 
+
     def generateResult(self, root):
         self.frame = Frame(root)
         self.frame.pack()
         self.label = Label(self.frame, justify="left", text=("Your result is:" + "\n\n"))
         self.label.pack(side="top", anchor="w")
-        self.label = Label(self.frame, justify="left", text=(self.results[0]))
+        self.label = Label(self.frame, justify="left", text=(self.results))
         self.label.pack(side="top", anchor="w")
         self.label.pack()
         self.label.bind("<1>", quit)
@@ -123,6 +124,7 @@ class Application:
         self.label.pack(side="top", anchor="w")
         self.label.pack()
         self.label.bind("<1>", quit)
+
 
     def __init__(self, master, VQuest, HMQuest):
         self.root = master # root is a passed Tk object
