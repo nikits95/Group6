@@ -4,6 +4,7 @@ from Question import *
 class Questionnaire:
 
 	def __init__(self, inQuestionnaireID, inType):
+		#selects the questionnaire type e.g. VARK or HM
 		self.type = inType
 		self.QuestionnaireID = inQuestionnaireID
 		self.Questions = []
