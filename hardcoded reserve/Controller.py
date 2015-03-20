@@ -4,8 +4,11 @@ from honeyMumford import *
 from CalResults import *
 from displayStyle import *
 from VARKQ import *
+from storage import *
 
 class Controller(Frame):
+
+	learningTypeStoreage = []
 	
 	def __init__(self, master):
 		Frame.__init__(self, master)
@@ -21,7 +24,7 @@ class Controller(Frame):
 		self.btnHome.grid(row=3)
 
 	def gettingHomeData(self, currentframe):
-		(yearOfStudy,degreeProgram) = currentframe.get_information()
+		(self.studentNumber,self.yearOfStudy,self.degreeProgram) = currentframe.get_information()
 		currentframe.destroy()
 
 		honeyMumfordQuestionnaire = honeyMumford(self.cont_frame)
@@ -31,36 +34,35 @@ class Controller(Frame):
 		self.btnHome["text"] = "Submit" 
 		self.btnHome["command"] = lambda: self.changeCurrentQuestion(self.number, honeyMumfordQuestionnaire,"Honey & Mumford",1)
 
-	def changeCurrentQuestion(self,number, selectedframe, questionnaireType, numberCompleted):
+	def changeCurrentQuestion(self,number, selectedFrame, questionnaireType, numberCompleted):
 		if number in range(1,8):
 			if number == 2:
-				selectedframe.changeQuestion(2)
+				selectedFrame.changeQuestion(2)
 				self.number +=1
 			elif number == 3:
-				selectedframe.changeQuestion(3)
+				selectedFrame.changeQuestion(3)
 				self.number +=1
 			elif number == 4:
-				selectedframe.changeQuestion(4)
+				selectedFrame.changeQuestion(4)
 				self.number +=1
 			elif number == 5:
-				selectedframe.changeQuestion(5)
+				selectedFrame.changeQuestion(5)
 				self.number +=1
 			elif number == 6:
-				selectedframe.changeQuestion(6)
+				selectedFrame.changeQuestion(6)
 				self.number +=1
 
-				self.honeyResults = selectedframe.getResults()
+				self.honeyResults = selectedFrame.getResults()
 				self.update()
-				#print(self.honeyResults)
-				selectedframe.destroy()
+				selectedFrame.destroy()
 				
 				self.questionnaireResults = CalResults(self.honeyResults, questionnaireType)
 				self.gettingInformation(self.questionnaireResults, questionnaireType,numberCompleted)
 
 	def gettingInformation(self,curretnFrame, questionnaireType, completedQuestionnaire):
-		learningType = curretnFrame.getType()
-		#print(learningType)
-		self.results = displayStyle(self.cont_frame, learningType, questionnaireType)
+		self.learningType = curretnFrame.getType()
+		Controller.learningTypeStoreage.append(self.learningType)
+		self.results = displayStyle(self.cont_frame, self.learningType, questionnaireType)
 		self.results.grid(row=2)
 
 		if completedQuestionnaire == 1:
@@ -69,6 +71,8 @@ class Controller(Frame):
 		else:
 			self.btnHome["text"] = "Exit"
 			self.btnHome["command"] = lambda: self.sendHome()
+			storingInfo = storage()
+			storingInfo.add_data(self.studentNumber,self.degreeProgram, self.yearOfStudy, Controller.learningTypeStoreage[0], Controller.learningTypeStoreage[1])
 		self.update()
 
 	def nextQuestionnaire(self):

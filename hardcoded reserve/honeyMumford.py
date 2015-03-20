@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.messagebox
 numberForTest = [1,2,3,4,5]
 
 class honeyMumford(Frame):
@@ -8,8 +9,18 @@ class honeyMumford(Frame):
 		Frame.__init__(self, master)
 		self.grid()
 		self.createQuestion()
-		#	self.createButton()
+		self.createQuitButton()
 
+	def createQuitButton(self):
+		btnQuit = Button(self, text="Quit", command=self.stopQuestionnaire)
+		btnQuit.grid(row=6, column=2)
+
+	def stopQuestionnaire(self):
+		if tkinter.messagebox.askyesno("You are about to quit!", "Are you sure you want to quit?", icon="warning"):
+			quit()
+		else:
+			pass
+		
 	def createQuestion(self):
 		self.varQ1 = IntVar
 		self.question1 = Label(self,text="When Learning What an Object is in object orientated programming do you prefer :")
@@ -29,16 +40,12 @@ class honeyMumford(Frame):
 
 	def getResults(self):
 		return honeyMumford.results
-	
-	def createButton(self):
-		self.number = 2
-		self.nextQuestion = Button(self, text="Next Question", command= lambda: self.changeQuestion(self.number))
-		self.nextQuestion.grid(row=6, column=2)
 
 	def changeQuestion(self, number):
 		answer = self.varQ1.get()
 		honeyMumford.results.append(answer)
 		if number == 2:
+			self.R1Q1.select()
 			self.question1["text"] = "When given a task to develop a piece of software for an item of coursework, do you find it best to:"
 			self.R1Q1["text"] = "Go straight into the problem with confidence of solving it"
 			self.R1Q1["value"] = 4 #(Activist)
@@ -50,18 +57,19 @@ class honeyMumford(Frame):
 			self.R4Q1["value"] = 2 #(Reflector)
 			self.number = 3
 		elif number == 3:
-			self.question1["text"] = "As a team you are about to start a software project for your new module and you need to \ncome up with a proper computer language which you will use.In the team meeting you will:"
+			self.R1Q1.select()
+			self.question1["text"] = "As a team you have been given a software task, you will need to decide upon a language, you would:"
 			self.R1Q1["text"] = "Start a discussion about the language with your team members"
 			self.R1Q1["value"] = 3 
 			self.R2Q1["text"] = "Start watching other team’s solutions on the problem to help you with your decision" 
 			self.R2Q1["value"] = 2
-			self.R3Q1["text"] = "Think more about the algorithms which will be needed in the project to get the most efficient language"
+			self.R3Q1["text"] = "Think more about the algorithms which can provide the most efficient language"
 			self.R3Q1["value"] = 4
-			self.R4Q1["text"] = "Research what the last year students had used and pick the language with the most successful projects"
+			self.R4Q1["text"] = "Research what has been a success for previous students and choose that language"
 			self.R4Q1["value"] = 1
 			self.number = 4
 		elif number == 4:
-			self.question1["text"] = "You have just received your first web applications coursework brief and you decide to start \ndeveloping your website, you wanted to try positioning items in your website although you \nhave not fully gone through it in class, you’re friends told you positioning items in the site is very hard,\n do you:"
+			self.question1["text"] = "A peice of coursework for web has been set and you do not understand fully on positioning in CSS will you:"
 			self.R1Q1["text"] = "Wait until you fully cover positioning in class and work on what you did in class later"
 			self.R1Q1["value"] = 1
 			self.R2Q1["text"] = "Keep on trying positioning items until you succeed"

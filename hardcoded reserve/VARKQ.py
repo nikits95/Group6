@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.messagebox
 numberForTest = [1,2,3,4,5]
 
 class VARKQ(Frame):
@@ -8,7 +9,17 @@ class VARKQ(Frame):
 		Frame.__init__(self, master)
 		self.grid()
 		self.createQuestion()
-		#	self.createButton()
+		self.createQuitButton()
+
+	def createQuitButton(self):
+		btnQuit = Button(self, text="Quit", command=self.stopQuestionnaire)
+		btnQuit.grid(row=6, column=2)
+
+	def stopQuestionnaire(self):
+		if tkinter.messagebox.askyesno("You are about to quit!", "Are you sure you want to quit?", icon="warning"):
+			quit()
+		else:
+			pass
 
 	def createQuestion(self): #1 =Visu 2=Kinesthetic 3=Aural 4=Reading
 		self.varQ1 = IntVar
@@ -29,11 +40,6 @@ class VARKQ(Frame):
 
 	def getResults(self):
 		return VARKQ.results
-	
-	def createButton(self):
-		self.number = 2
-		self.nextQuestion = Button(self, text="Next Question", command= lambda: self.changeQuestion(self.number))
-		self.nextQuestion.grid(row=6, column=2)
 
 	def changeQuestion(self, number):
 		answer = self.varQ1.get()
@@ -50,7 +56,7 @@ class VARKQ(Frame):
 			self.R4Q1["value"] = 2#(Kinesthetic)
 			self.number = 3
 		elif number == 3:
-			self.question1["text"] = "You are about to use a function from a new framework you found on the internet and you are not quite sure how it works. You will:"
+			self.question1["text"] = "You are about to use a function from a new framework you found on the internet and you are unsure how it works. You will:"
 			self.R1Q1["text"] = "Read the documentation given in the website of the framework"
 			self.R1Q1["value"] = 4 
 			self.R2Q1["text"] = "Check examples already done by somebody" 
@@ -61,7 +67,7 @@ class VARKQ(Frame):
 			self.R4Q1["value"] = 2
 			self.number = 4
 		elif number == 4:
-			self.question1["text"] = "You are studying networking and wanted to revise, you see the different network topologies (e.g. Bus, Star and Ring) and decided to go over them, do you:"
+			self.question1["text"] = "You are revising networking, you see the different network topologies (e.g. Bus). Do you:"
 			self.R1Q1["text"] = "Go to the nearest computer lab and try to analyse which topology the lab is using."
 			self.R1Q1["value"] = 2
 			self.R2Q1["text"] = "I understood the topologies after I attended the lecture."
@@ -72,7 +78,7 @@ class VARKQ(Frame):
 			self.R4Q1["value"] = 1 
 			self.number = 5
 		elif number == 5:
-			self.question1["text"] = "If you are helping someone with a question where you need to solve a programming problem, you would:"
+			self.question1["text"] = "You are helping someone with a programming problem, to answer them would you:"
 			self.R1Q1["text"] = "Write down Pseudocode/code to help them solve the problem. "
 			self.R1Q1["value"] = 4
 			self.R2Q1["text"] = "Go through the problem on the computers with the person"
