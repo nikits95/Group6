@@ -24,16 +24,20 @@ class Controller(Frame):
 		self.btnHome.grid(row=3)
 
 	def gettingHomeData(self, currentframe):
-		(self.studentNumber,self.yearOfStudy,self.degreeProgram) = currentframe.get_information()
-		currentframe.destroy()
+		try:
+			(self.studentNumber,self.yearOfStudy,self.degreeProgram) = currentframe.get_information()
+			currentframe.destroy()
+			self.root.geometry("700x200")
 
-		honeyMumfordQuestionnaire = honeyMumford(self.cont_frame)
-		honeyMumfordQuestionnaire.grid(row=2)
+			honeyMumfordQuestionnaire = honeyMumford(self.cont_frame)
+			honeyMumfordQuestionnaire.grid(row=2)
 
-		self.number = 2
-		self.btnHome["text"] = "Submit" 
-		self.btnHome["command"] = lambda: self.changeCurrentQuestion(self.number, honeyMumfordQuestionnaire,"Honey & Mumford",1)
-
+			self.number = 2
+			self.btnHome["text"] = "Submit" 
+			self.btnHome["command"] = lambda: self.changeCurrentQuestion(self.number, honeyMumfordQuestionnaire,"Honey & Mumford",1)
+		except TypeError:
+			pass
+			
 	def changeCurrentQuestion(self,number, selectedFrame, questionnaireType, numberCompleted):
 		if number in range(1,8):
 			if number == 2:
@@ -81,19 +85,17 @@ class Controller(Frame):
 		self.number = 2
 		self.btnHome["command"] = lambda: self.changeCurrentQuestion(self.number, varkQues,"VARK",2)
 		varkQues = VARKQ(self.cont_frame)
+		self.root.geometry("700x200")
 		varkQues.grid(row=2)
 
 	def sendHome(self):
 		self.results.destroy()
 		homepage = Home(self.cont_frame)
-		homepage.grid(row=2)
+		homepage.grid(row=1)
 		self.btnHome["text"] = "Submit"
 		self.btnHome["command"] = lambda: self.gettingHomeData(homepage)
 		self.quit()
 		self.update()
-		
-
-
 		
 def main():
 	root = Tk()

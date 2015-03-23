@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.messagebox
 
 class Home(Frame):
   def __init__(self,master):
@@ -11,8 +12,10 @@ class Home(Frame):
 
 
   def get_information(self):
-    #return "Tim","BIS"
-    return int(self.userNumber.get()),str(self.varYear.get()), str(self.varDegree.get())
+    try:
+      return int(self.userNumber.get()),str(self.varYear.get()), str(self.varDegree.get())
+    except ValueError:
+      tkinter.messagebox.showinfo("Invlaid Number", "Please ensure student number is only numbers",icon="warning")
 
   def create_degree_program(self):
     lblDegree = Label(self, text="Degree Program:")
@@ -56,8 +59,11 @@ class Home(Frame):
 ##### test code ######
 
 def test_button(f):
-    (a,b,c) = f.get_information()
-    print(a,b,c)
+    try:
+      (a,b,c) = f.get_information()
+      print(a,b,c)
+    except TypeError:
+      pass
 
 def main():
   window = Tk()
