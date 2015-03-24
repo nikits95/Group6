@@ -5,6 +5,9 @@ from CalResults import *
 from displayStyle import *
 from VARKQ import *
 from storage import *
+from admin import *
+import tkinter.messagebox
+
 
 class Controller(Frame):
 
@@ -18,14 +21,38 @@ class Controller(Frame):
 		self.cont_frame.pack(side=TOP)
 		self.root.geometry("800x500")
 
-		homepage = Home(self.cont_frame)
-		homepage.pack()
+		self.homepage = Home(self.cont_frame)
+		self.homepage.pack()
 
-		self.btnHome = Button(self.cont_frame, text="Submit", command= lambda: self.gettingHomeData(homepage))
+		self.btnHome = Button(self.cont_frame, text="Submit", command= lambda: self.gettingHomeData(self.homepage))
+		self.btnHome.pack(side=BOTTOM)
+
+		self.btnLec = Button(self.cont_frame, text="lecturer Area", command= self.lecturePage)
+		self.btnLec.pack(side=BOTTOM)
+
+	def lecturePage(self):
+		if tkinter.messagebox.askyesno("Are you lecturer at COMSC", "Are you a member of teh COMSC Staff?", icon="warning"):
+			self.homepage.destroy()
+			self.btnLec["command"] = self.goback
+			self.btnLec["text"] = "Go Back"
+			self.adminPage = admin(self.cont_frame)
+			self.adminPage.pack()
+			self.btnHome.destroy()
+		else:
+			pass
+
+	def goback(self):
+		self.adminPage.destroy()
+		self.btnLec["command"] = self.lecturePage
+		self.btnLec["text"] = "lecturer Area"
+		self.homepage = Home(self.cont_frame)
+		self.homepage.pack()
+		self.btnHome = Button(self.cont_frame, text="Submit", command= lambda: self.gettingHomeData(self.homepage))
 		self.btnHome.pack(side=BOTTOM)
 
 	def gettingHomeData(self, currentframe):
 		try:
+			self.btnLec.destroy()
 			(self.studentNumber,self.yearOfStudy,self.degreeProgram) = currentframe.get_information()
 			currentframe.destroy()
 

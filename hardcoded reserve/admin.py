@@ -1,68 +1,88 @@
 from tkinter import *
+from data import *
+import tkinter.messagebox
+
 
 
 class admin(Frame):
   def __init__(self,master):
     Frame.__init__(self,master)
     alable = Label(self,text="Lecturer")
-    alable.grid(row=1, column=1)
+    alable.pack()
     self.create_degree_program()
     self.create_yearOfStudy()
-    #self.createButton()
-
-
-  def get_information(self):
-    #return "Tim","BIS"
-    return str(self.varYear.get()), str(self.listProg.get(self.listProg.curselection()))
+    self.createVARKButton()
+    self.createHMButton()
+    self.createALLButton()
 
   def create_degree_program(self):
-    lblDegree = Label(self, text="Student Degree Program")
-    lblDegree.grid(row=3, column=0, sticky=NE)
+    lblDegree = Label(self, text="Select student degree:")
+    lblDegree.pack()
 
-    self.listProg = Listbox(self, height= 3)
-    scroll = Scrollbar(self, command= self.listProg.yview) 
-    self.listProg.configure(yscrollcommand=scroll.set)
-    self.listProg.grid(row=3, column=1, sticky=NE, rowspan=3) 
-    scroll.grid(row=3, column=4, sticky=W)
-    
-    for item in ["CS", "CS with", "BIS", "SE", "Joints"]: 
-      self.listProg.insert(END, item)
-    self.listProg.selection_set(END)
+    self.varDegree = StringVar()
 
+    R1 = Radiobutton(self, text="CS", variable=self.varDegree, value="CS")
+    R1.pack(side=TOP, anchor=W)
+    R1.select()
+    R2 = Radiobutton(self,text="CS With", variable= self.varDegree, value="CS With")
+    R2.pack(side=TOP, anchor=W)
+    R3 = Radiobutton(self, text="SE", variable= self.varDegree, value="SE") 
+    R3.pack(side=TOP, anchor=W)
+    R4 = Radiobutton(self, text="Joints", variable= self.varDegree, value="Joints") 
+    R4.pack(side=TOP, anchor=W)
+    R5 = Radiobutton(self, text="BIS", variable= self.varDegree, value="BIS") 
+    R5.pack(side=TOP, anchor=W)
+  
   def create_yearOfStudy(self):
-    lblYear = Label(self, text="Current Year of Study")
-    lblYear.grid(row=8, column=0, sticky=NE)
+    lblYear = Label(self, text="Select year of study:")
+    lblYear.pack()
 
     self.varYear = StringVar()
     R1 = Radiobutton(self, text="Year1", variable=self.varYear, value="Year1")
-    R1.grid(row=8, column= 1, sticky=W, padx=100)
+    R1.pack(side=TOP, anchor=W)
     R1.select()
     R2 = Radiobutton(self,text="Year2", variable= self.varYear, value="Year2")
-    R2.grid(row=9, column= 1, sticky=W, padx=100)
+    R2.pack(side=TOP, anchor=W)
     R3 = Radiobutton(self, text="Year3", variable= self.varYear, value="Year3") 
-    R3.grid(row=10, column= 1, sticky=W, padx=100)
+    R3.pack(side=TOP, anchor=W)
     R4 = Radiobutton(self, text="Year4", variable= self.varYear, value="Year4") 
-    R4.grid(row=11, column= 1, sticky=W, padx=100)
+    R4.pack(side=TOP, anchor=W)
 
-  def createButton(self):
-    btn = Button(self, text="Get analysis", command=self.get_information)
-    btn.grid(row=12)
+  def createVARKButton(self):
+    btn = Button(self, text="Get VARK analysis", command= lambda: self.getVARKData(self.varYear.get(), self.varDegree.get()))
+    btn.pack(side=BOTTOM, anchor=N)
+
+  def createHMButton(self):
+    btn = Button(self, text="Get Honey and Mumford analysis", command= lambda: self.getHMData(self.varYear.get(), self.varDegree.get()))
+    btn.pack(side=BOTTOM, anchor=N)
+
+  def createALLButton(self):
+    btn = Button(self, text="Get analysis on everything", command= lambda: self.getALLData(self.varYear.get(), self.varDegree.get()))
+    btn.pack(side=BOTTOM, anchor=N)
 
 
+  def getVARKData(self, year, degreeType):
+    a = storage()
+    a.print_out_vark(year, degreeType)
+
+
+  def getHMData(self, year, degreeType):
+    a = storage()
+    a.print_out_HM(year, degreeType)
+
+  def getALLData(self, year, degreeType):
+    a = storage()
+    a.print_out_ALL(year, degreeType)  
+
+			
 ##### test code ######
 
-def test_button(f):
-    (a,b) = f.get_information()
-    print(a,b)
 
 def main():
   window = Tk()
   window.title("Lecturer Page")
   f1 = admin(window)
   f1.pack(side = TOP, padx =20, pady =20)
-  btn = Button( window , text = 'Choose',
-    command = lambda: test_button(f1))
-  btn.pack(side = BOTTOM, padx =20, pady =20)
   window.mainloop()
 
 if __name__ == '__main__':

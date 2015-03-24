@@ -15,7 +15,7 @@ class Home(Frame):
     try:
       return int(self.userNumber.get()),str(self.varYear.get()), str(self.varDegree.get())
     except ValueError:
-      tkinter.messagebox.showinfo("Invalid Number", "Please ensure student number is only numbers",icon="warning")
+      tkinter.messagebox.showinfo("Invlaid Number", "Please ensure student number is only numbers",icon="warning")
 
   def create_degree_program(self):
     lblDegree = Label(self, text="Degree Program:")
@@ -31,6 +31,8 @@ class Home(Frame):
     R3.pack(side=TOP, anchor=W)
     R4 = Radiobutton(self, text="Joints", variable= self.varDegree, value="Joints") 
     R4.pack(side=TOP, anchor=W)
+    R5 = Radiobutton(self, text="BIS", variable= self.varDegree, value="BIS") 
+    R5.pack(side=TOP, anchor=W)
 
   def create_yearOfStudy(self):
     lblYear = Label(self, text="Current Year of Study:")
@@ -48,7 +50,7 @@ class Home(Frame):
     R4.pack(side=TOP, anchor=W)
 
   def get_number(self):
-    lblNumber = Label(self, text="Student Number:")
+    lblNumber = Label(self, text="Number:")
     lblNumber.pack()
 
     self.userNumber = IntVar()
