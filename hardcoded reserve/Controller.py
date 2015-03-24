@@ -31,7 +31,7 @@ class Controller(Frame):
 		self.btnLec.pack(side=BOTTOM)
 
 	def lecturePage(self):
-		if tkinter.messagebox.askyesno("Are you lecturer at COMSC", "Are you a member of teh COMSC Staff?", icon="warning"):
+		if tkinter.messagebox.askyesno("Are you lecturer at COMSC", "Are you a member of the COMSC Staff?", icon="warning"):
 			self.homepage.destroy()
 			self.btnLec["command"] = self.goback
 			self.btnLec["text"] = "Go Back"
