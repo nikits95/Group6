@@ -15,7 +15,7 @@ class Home(Frame):
     try:
       return int(self.userNumber.get()),str(self.varYear.get()), str(self.varDegree.get())
     except ValueError:
-      tkinter.messagebox.showinfo("Invlaid Number", "Please ensure student number is only numbers",icon="warning")
+      tkinter.messagebox.showinfo("Invalid Number", "Please ensure student number is only numbers",icon="warning")
 
   def create_degree_program(self):
     lblDegree = Label(self, text="Degree Program:")
@@ -48,7 +48,7 @@ class Home(Frame):
     R4.grid(row=13, column= 1, sticky=W, padx=100)
 
   def get_number(self):
-    lblNumber = Label(self, text="Number:")
+    lblNumber = Label(self, text="Student Number:")
     lblNumber.grid(row=14, column=0)
 
     self.userNumber = IntVar()
