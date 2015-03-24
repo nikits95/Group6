@@ -7,7 +7,7 @@ class honeyMumford(Frame):
 
 	def __init__(self, master):
 		Frame.__init__(self, master)
-		self.grid()
+		self.pack()
 		self.createQuestion()
 		self.createQuitButton()
 

@@ -38,6 +38,7 @@ class Controller(Frame):
 			self.adminPage = admin(self.cont_frame)
 			self.adminPage.pack()
 			self.btnHome.destroy()
+			self.update()
 		else:
 			pass
 
@@ -49,6 +50,7 @@ class Controller(Frame):
 		self.homepage.pack()
 		self.btnHome = Button(self.cont_frame, text="Submit", command= lambda: self.gettingHomeData(self.homepage))
 		self.btnHome.pack(side=BOTTOM)
+		self.update()
 
 	def gettingHomeData(self, currentframe):
 		try:

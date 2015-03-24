@@ -50,15 +50,15 @@ class admin(Frame):
 
   def createVARKButton(self):
     btn = Button(self, text="Get VARK analysis", command= lambda: self.getVARKData(self.varYear.get(), self.varDegree.get()))
-    btn.pack(side=BOTTOM, anchor=N)
+    btn.pack(side=BOTTOM, anchor=N, fill=X)
 
   def createHMButton(self):
     btn = Button(self, text="Get Honey and Mumford analysis", command= lambda: self.getHMData(self.varYear.get(), self.varDegree.get()))
-    btn.pack(side=BOTTOM, anchor=N)
+    btn.pack(side=BOTTOM, anchor=N, fill=X)
 
   def createALLButton(self):
     btn = Button(self, text="Get analysis on everything", command= lambda: self.getALLData(self.varYear.get(), self.varDegree.get()))
-    btn.pack(side=BOTTOM, anchor=N)
+    btn.pack(side=BOTTOM, anchor=N, fill=X)
 
 
   def getVARKData(self, year, degreeType):
