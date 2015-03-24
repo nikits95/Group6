@@ -32,7 +32,7 @@ class storage:
                     A = A + 1
                 elif r[4] == "Reading":
                     R = R + 1
-                elif r[4] == "Kinetic":
+                elif r[4] == "Kinesthetic":
                     K = K + 1
         if V == 1:
         	s = "Student"
@@ -57,7 +57,7 @@ class storage:
         v = "Visual: " +  str(V) + " " + s
         a = "Aural: " + str(A) + " " + st
         r = "Reading: " + str(R) + " " + stu 
-        k = "Kinetic: " + str(K) + " " + stud
+        k = "Kinesthetic: " + str(K) + " " + stud
 
         n = V + A + R + K
 
@@ -78,7 +78,7 @@ class storage:
         for r in self.data_table: 
             if r[3] == "Reflector":
                 R = R + 1
-            elif r[3] == "Pragmatic":
+            elif r[3] == "Pragmatist":
                 P = P + 1
             elif r[3] == "Theorist":
                 T = T + 1
@@ -86,7 +86,7 @@ class storage:
                 A = A + 1
                         
         r= "Reflector: " + str(R) + " " + "student"
-        p = "Pragmatic: " +  str(P) + " " + "student"
+        p = "Pragmatist: " +  str(P) + " " + "student"
         t = "Theorist: " + str(T) + " " + "student"
         a = "Activist " + str(A) + " " + "student"
 
@@ -98,13 +98,13 @@ class storage:
                 A = A + 1
             elif r[4] == "Reading":
                 R = R + 1
-            elif r[4] == "Kinetic":
+            elif r[4] == "Kinesthetic":
                 K = K + 1
                         
         v = "Visual: " +  str(V) + " " + "student"
         a = "Aural: " + str(A) + " " + "student" 
         r = "Reading: " + str(R) + " " + "student" 
-        k = "Kinetic: " + str(K) + " " + "student"
+        k = "Kinesthetic: " + str(K) + " " + "student"
 
         n = V + A + R + K + R + P + T + A
 
@@ -122,7 +122,7 @@ class storage:
             if r[2] == degreeType and r[1] == year :  
                 if r[3] == "Reflector":
                     R = R + 1
-                elif r[3] == "Pragmatic":
+                elif r[3] == "Pragmatist":
                     P = P + 1
                 elif r[3] == "Theorist":
                     T = T + 1
@@ -154,7 +154,7 @@ class storage:
         	stud = "Students"            
                         
         r= "Reflector: " + str(R) + " " + s
-        p = "Pragmatic: " +  str(P) + " " + st
+        p = "Pragmatist: " +  str(P) + " " + st
         t = "Theorist: " + str(T) + " " + stu
         a = "Activist " + str(A) + " " + stud
 
