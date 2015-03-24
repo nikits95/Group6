@@ -13,7 +13,7 @@ class VARKQ(Frame):
 
 	def createQuitButton(self):
 		btnQuit = Button(self, text="Quit", command=self.stopQuestionnaire)
-		btnQuit.grid(row=6, column=2)
+		btnQuit.pack(side=BOTTOM)
 
 	def stopQuestionnaire(self):
 		if tkinter.messagebox.askyesno("You are about to quit!", "Are you sure you want to quit?", icon="warning"):
@@ -24,19 +24,19 @@ class VARKQ(Frame):
 	def createQuestion(self): #1 =Visu 2=Kinesthetic 3=Aural 4=Reading
 		self.varQ1 = IntVar
 		self.question1 = Label(self,text="When using a brand new IDE or any other software to allow coding, do you understand it by:")
-		self.question1.grid(row=1, column=1, columnspan=4,sticky=W,padx=50,pady=10)
+		self.question1.pack(side=TOP, anchor=W, padx=20, pady=20)
 
 		#creating question1 answers
 		self.varQ1 = IntVar()
 		self.R1Q1 = Radiobutton(self, text="Watching a video tutorial online to understand how it works.", variable=self.varQ1, value=1)#(visual)
-		self.R1Q1.grid(row=2, column= 2, sticky=W, padx=100)
+		self.R1Q1.pack(anchor=W)
 		self.R1Q1.select()
 		self.R2Q1 = Radiobutton(self,text="Play with the software and overtime learn how to use it", variable= self.varQ1, value=2) #(Kinesthetic)
-		self.R2Q1.grid(row=3, column= 2, sticky=W, padx=100)
+		self.R2Q1.pack(anchor=W)
 		self.R3Q1 = Radiobutton(self, text="Ask someone who has had experience with the software", variable= self.varQ1, value=3) #(Aural)
-		self.R3Q1.grid(row=4, column= 2, sticky=W, padx=100)
+		self.R3Q1.pack(anchor=W)
 		self.R4Q1 = Radiobutton(self, text="Find an online or locally saved manual to learn the software", variable= self.varQ1, value=4) #(Reading)
-		self.R4Q1.grid(row=5, column= 2, sticky=W, padx=100)
+		self.R4Q1.pack(anchor=W)
 
 	def getResults(self):
 		return VARKQ.results
@@ -56,7 +56,7 @@ class VARKQ(Frame):
 			self.R4Q1["value"] = 2#(Kinesthetic)
 			self.number = 3
 		elif number == 3:
-			self.question1["text"] = "You are about to use a function from a new framework you found on the internet and you are unsure how it works. You will:"
+			self.question1["text"] = "You are about to use a function from a new framework, you are unsure how it works. You will:"
 			self.R1Q1["text"] = "Read the documentation given in the website of the framework"
 			self.R1Q1["value"] = 4 
 			self.R2Q1["text"] = "Check examples already done by somebody" 

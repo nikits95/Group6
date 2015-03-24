@@ -15,25 +15,26 @@ class Controller(Frame):
 		self.root = master
 
 		self.cont_frame = Frame(self.root)
-		self.cont_frame.grid(row=1)
+		self.cont_frame.pack(side=TOP)
+		self.root.geometry("800x500")
 
 		homepage = Home(self.cont_frame)
-		homepage.grid(row=2)
+		homepage.pack()
 
 		self.btnHome = Button(self.cont_frame, text="Submit", command= lambda: self.gettingHomeData(homepage))
-		self.btnHome.grid(row=3)
+		self.btnHome.pack(side=BOTTOM)
 
 	def gettingHomeData(self, currentframe):
 		try:
 			(self.studentNumber,self.yearOfStudy,self.degreeProgram) = currentframe.get_information()
 			currentframe.destroy()
-			self.root.geometry("700x200")
 
 			honeyMumfordQuestionnaire = honeyMumford(self.cont_frame)
-			honeyMumfordQuestionnaire.grid(row=2)
+			self.root.geometry("800x300")
+			honeyMumfordQuestionnaire.pack()
 
 			self.number = 2
-			self.btnHome["text"] = "Submit" 
+			self.btnHome["text"] = "Next" 
 			self.btnHome["command"] = lambda: self.changeCurrentQuestion(self.number, honeyMumfordQuestionnaire,"Honey & Mumford",1)
 		except TypeError:
 			pass
@@ -67,7 +68,7 @@ class Controller(Frame):
 		self.learningType = curretnFrame.getType()
 		Controller.learningTypeStoreage.append(self.learningType)
 		self.results = displayStyle(self.cont_frame, self.learningType, questionnaireType)
-		self.results.grid(row=2)
+		self.results.pack()
 
 		if completedQuestionnaire == 1:
 			self.btnHome["text"] = "VARK Questionnaire"
@@ -81,19 +82,14 @@ class Controller(Frame):
 
 	def nextQuestionnaire(self):
 		self.results.destroy()
-		self.btnHome["text"] = "Submit"
+		self.btnHome["text"] = "Next"
 		self.number = 2
 		self.btnHome["command"] = lambda: self.changeCurrentQuestion(self.number, varkQues,"VARK",2)
 		varkQues = VARKQ(self.cont_frame)
-		self.root.geometry("700x200")
-		varkQues.grid(row=2)
+		varkQues.pack()
 
 	def sendHome(self):
 		self.results.destroy()
-		homepage = Home(self.cont_frame)
-		homepage.grid(row=1)
-		self.btnHome["text"] = "Submit"
-		self.btnHome["command"] = lambda: self.gettingHomeData(homepage)
 		self.quit()
 		self.update()
 		

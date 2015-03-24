@@ -13,7 +13,7 @@ class honeyMumford(Frame):
 
 	def createQuitButton(self):
 		btnQuit = Button(self, text="Quit", command=self.stopQuestionnaire)
-		btnQuit.grid(row=6, column=2)
+		btnQuit.pack(side=BOTTOM)
 
 	def stopQuestionnaire(self):
 		if tkinter.messagebox.askyesno("You are about to quit!", "Are you sure you want to quit?", icon="warning"):
@@ -24,19 +24,19 @@ class honeyMumford(Frame):
 	def createQuestion(self):
 		self.varQ1 = IntVar
 		self.question1 = Label(self,text="When Learning What an Object is in object orientated programming do you prefer :")
-		self.question1.grid(row=1, column=1, columnspan=4,sticky=W,padx=50,pady=10)
+		self.question1.pack(side=TOP, anchor=W, padx=20, pady=20)
 
 		#creating question1 answers
 		self.varQ1 = IntVar()
 		self.R1Q1 = Radiobutton(self, text="To role-play a scenario", variable=self.varQ1, value=4)#(Activist)
-		self.R1Q1.grid(row=2, column= 2, sticky=W, padx=100)
+		self.R1Q1.pack(anchor=W)
 		self.R1Q1.select()
 		self.R2Q1 = Radiobutton(self,text="Read a book about the subject", variable= self.varQ1, value=3) #(Theorist)
-		self.R2Q1.grid(row=3, column= 2, sticky=W, padx=100)
+		self.R2Q1.pack(anchor=W)
 		self.R3Q1 = Radiobutton(self, text="Be given a relevant case study that applies in a working environment", variable= self.varQ1, value=2) #(Pragmatist)
-		self.R3Q1.grid(row=4, column= 2, sticky=W, padx=100)
+		self.R3Q1.pack(anchor=W)
 		self.R4Q1 = Radiobutton(self, text="Discuss in a group", variable= self.varQ1, value=1) #(Reflector)
-		self.R4Q1.grid(row=5, column= 2, sticky=W, padx=100)
+		self.R4Q1.pack(anchor=W)
 
 	def getResults(self):
 		return honeyMumford.results

@@ -3,7 +3,7 @@ from tkinter import *
 class displayStyle(Frame):
 	def __init__(self, master, learningType, QuestionnaireType):
 		Frame.__init__(self, master)
-		self.grid()
+		self.pack()
 		l = Label(self,text="Your learning style for "+ QuestionnaireType + "\n is " + learningType, font=("Helvetica", 30, "bold italic"))
 		l.pack()
 
