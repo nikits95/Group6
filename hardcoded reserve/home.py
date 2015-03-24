@@ -48,13 +48,8 @@ class Home(Frame):
     R4.pack(side=TOP, anchor=W)
 
   def get_number(self):
-<<<<<<< Updated upstream
     lblNumber = Label(self, text="Student Number:")
-    lblNumber.grid(row=14, column=0)
-=======
-    lblNumber = Label(self, text="Number:")
     lblNumber.pack()
->>>>>>> Stashed changes
 
     self.userNumber = IntVar()
     userNumber = Entry(self, textvariable=self.userNumber)
