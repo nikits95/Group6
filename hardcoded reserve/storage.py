@@ -19,146 +19,190 @@ class storage:
             print(r[0], r[1], r[2], r[3], r[4])
 
     def print_out_vark(self, year, degreeType):
-        V = 0
-        A = 0
-        R = 0
-        K = 0
+        visualAns = 0
+        audalAns = 0
+        readingAns = 0
+        kineticAns = 0
         
         for r in self.data_table:
             if r[2] == degreeType and r[1] == year :  
                 if r[4] == "Visual":
-                    V = V + 1
+                    visualAns = visualAns + 1
                 elif r[4] == "Aural":
-                    A = A + 1
+                    audalAns = audalAns + 1
                 elif r[4] == "Reading":
-                    R = R + 1
+                    readingAns = readingAns + 1
                 elif r[4] == "Kinesthetic":
-                    K = K + 1
-        if V == 1:
+                    kineticAns = kineticAns + 1
+        if visualAns == 1:
             s = "Student"
         else:
             s = "Students"  
 
-        if A == 1:
+        if audalAns == 1:
             st = "Student"
         else:
             st = "Students"
 
-        if R == 1:
+        if readingAns == 1:
             stu = "Student"
         else:
             stu = "Students"
             
-        if K == 1:
+        if kineticAns == 1:
             stud = "Student"
         else:
             stud = "Students"                       
                         
-        v = "Visual: " +  str(V) + " " + s
-        a = "Aural: " + str(A) + " " + st
-        r = "Reading: " + str(R) + " " + stu 
-        k = "Kinesthetic: " + str(K) + " " + stud
+        visual = "Visual: " +  str(visualAns) + " " + s
+        aural = "Aural: " + str(audalAns) + " " + st
+        reading = "Reading: " + str(readingAns) + " " + stu 
+        kinetic = "Kinesthetic: " + str(kineticAns) + " " + stud
 
-        n = V + A + R + K
+        n = visualAns + audalAns + readingAns + kineticAns
 
-        c = "There were " + str(n) + " Students who took the questionnaire where:"
-        tkinter.messagebox.showinfo("Analysis", c + "\n" + "\n" +  v + "\n" + a + "\n" + r + "\n" + k )
+        caption = "There were " + str(n) + " Students who took the questionnaire where:"
+        tkinter.messagebox.showinfo("Analysis", caption + "\n" + "\n" +  visual + "\n" + aural + "\n" + reading + "\n" + kinetic )
 
     def print_out_ALL(self, year, degreeType):
-        R = 0
-        P = 0
-        T = 0
-        A = 0
+        refAns = 0
+        pragAns = 0
+        theoAns = 0
+        actAns = 0
 
-        V = 0
-        A = 0
-        R = 0
-        K = 0
+        visualAns = 0
+        audalAns = 0
+        readingAns = 0
+        kineticAns = 0
 
         for r in self.data_table: 
             if r[3] == "Reflector":
-                R = R + 1
+                refAns = refAns + 1
             elif r[3] == "Pragmatist":
-                P = P + 1
+                pragAns = pragAns + 1
             elif r[3] == "Theorist":
-                T = T + 1
+                theoAns = theoAns + 1
             elif r[3] == "Activist":
-                A = A + 1
+                actAns = actAns + 1
+
+        if refAns == 1:
+            sRef = "Student"
+        else:
+            sRef = "Students"  
+
+        if pragAns == 1:
+            sPrag = "Student"
+        else:
+            sPrag = "Students"
+
+        if theoAns == 1:
+            sTheo = "Student"
+        else:
+            sTheo = "Students"
+            
+        if actAns == 1:
+            sAns = "Student"
+        else:
+            sAns = "Students" 
+
+
                         
-        r= "Reflector: " + str(R) + " " + "student"
-        p = "Pragmatist: " +  str(P) + " " + "student"
-        t = "Theorist: " + str(T) + " " + "student"
-        a = "Activist " + str(A) + " " + "student"
+        reflector= "Reflector: " + str(refAns) + " " + sRef
+        pragmatist = "Pragmatist: " +  str(pragAns) + " " + sPrag
+        theorist = "Theorist: " + str(theoAns) + " " + sTheo
+        activist = "Activist " + str(kineticAns) + " " + sAns
+        n = reflector + pragmatist + theorist + activist
 
         
-        for r in self.data_table:  
+        for r in self.data_table:    
             if r[4] == "Visual":
-                V = V + 1
+                visualAns = visualAns + 1
             elif r[4] == "Aural":
-                A = A + 1
+                audalAns = audalAns + 1
             elif r[4] == "Reading":
-                R = R + 1
+                readingAns = readingAns + 1
             elif r[4] == "Kinesthetic":
-                K = K + 1
-                        
-        v = "Visual: " +  str(V) + " " + "student"
-        a = "Aural: " + str(A) + " " + "student" 
-        r = "Reading: " + str(R) + " " + "student" 
-        k = "Kinesthetic: " + str(K) + " " + "student"
+                kineticAns = kineticAns + 1
 
-        n = V + A + R + K + R + P + T + A
-
-        c = "There were " + str(n) + " Students who took the questionnaire where:"
-
-        tkinter.messagebox.showinfo("Analysis",  c + "\n" + "\n" +v + "\n" + a + "\n" + r + "\n" + k +"\n" + "\n" + r + "\n" + p + "\n" + t + "\n" + a)
-
-    def print_out_HM(self, year, degreeType):
-        R = 0
-        P = 0
-        T = 0
-        A = 0
-
-        for r in self.data_table:
-            if r[2] == degreeType and r[1] == year :  
-                if r[3] == "Reflector":
-                    R = R + 1
-                elif r[3] == "Pragmatist":
-                    P = P + 1
-                elif r[3] == "Theorist":
-                    T = T + 1
-                elif r[3] == "Activist":
-                    A = A + 1
-
-        n = R + P + T + A
-
-        c = "There were " + str(n) + " Students who took the questionnaire where:"
-        
-        if R == 1:
+        if visualAns == 1:
             s = "Student"
         else:
             s = "Students"  
 
-        if P == 1:
+        if audalAns == 1:
             st = "Student"
         else:
             st = "Students"
 
-        if T == 1:
+        if readingAns == 1:
             stu = "Student"
         else:
             stu = "Students"
             
-        if A == 1:
+        if kineticAns == 1:
             stud = "Student"
         else:
-            stud = "Students"            
+            stud = "Students"
                         
-        r= "Reflector: " + str(R) + " " + s
-        p = "Pragmatist: " +  str(P) + " " + st
-        t = "Theorist: " + str(T) + " " + stu
-        a = "Activist " + str(A) + " " + stud
+        visual = "Visual: " +  str(visualAns) + " " + s
+        aural = "Aural: " + str(audalAns) + " " + st
+        reading = "Reading: " + str(readingAns) + " " + stu 
+        kinetic = "Kinesthetic: " + str(kineticAns) + " " + stud
 
-        tkinter.messagebox.showinfo("Analysis", c + "\n" + "\n" +  r + "\n" + p + "\n" + t + "\n" + a)
+        n = visualAns + audalAns + readingAns + kineticAns
+
+        c = "There were " + str(n) + " Students who took the questionnaire where:"
+
+        tkinter.messagebox.showinfo("Analysis",  c + "\n" + "\n" +visual + "\n" + aural + "\n" + reading + "\n" + kinetic +"\n" + "\n" + reflector + "\n" + pragmatist + "\n" + theorist + "\n" + activist)
+
+    def print_out_HM(self, year, degreeType):
+        refAns = 0
+        pragAns = 0
+        theoAns = 0
+        actAns = 0
+
+        for r in self.data_table:
+            if r[2] == degreeType and r[1] == year :  
+                if r[3] == "Reflector":
+                    refAns = refAns + 1
+                elif r[3] == "Pragmatist":
+                    pragAns = pragAns + 1
+                elif r[3] == "Theorist":
+                    theoAns = theoAns + 1
+                elif r[3] == "Activist":
+                    actAns = actAns + 1
+
+    
+        if refAns == 1:
+            sRef = "Student"
+        else:
+            sRef = "Students"  
+
+        if pragAns == 1:
+            sPrag = "Student"
+        else:
+            sPrag = "Students"
+
+        if theoAns == 1:
+            sTheo = "Student"
+        else:
+            sTheo = "Students"
+            
+        if actAns == 1:
+            sAns = "Student"
+        else:
+            sAns = "Students"            
+                        
+        reflector= "Reflector: " + str(refAns) + " " + sRef
+        pragmatist = "Pragmatist: " +  str(pragAns) + " " + sPrag
+        theorist = "Theorist: " + str(theoAns) + " " + sTheo
+        activist = "Activist " + str(actAns) + " " + sAns
+        
+        n = refAns + pragAns + theoAns + actAns
+
+        caption = "There were " + str(n) + " Students who took the questionnaire where:"
+        
+        tkinter.messagebox.showinfo("Analysis", caption + "\n" + "\n" +  reflector + "\n" + pragmatist + "\n" + theorist + "\n" + activist)
 
 
     def store(self):
