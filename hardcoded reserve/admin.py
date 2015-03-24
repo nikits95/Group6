@@ -1,5 +1,5 @@
 from tkinter import *
-from data import *
+from storage import *
 import tkinter.messagebox
 
 
