@@ -20,9 +20,11 @@ class Home(Frame):
       tkinter.messagebox.showinfo("Invlaid Number", "Please ensure student number is only numbers",icon="warning")
 
   def create_degree_program(self):
+    # this will create a label in the position stated in the lblDegree.pack
     lblDegree = Label(self, text="Degree Program:")
     lblDegree.pack(side=TOP, padx=20, pady=20)
-  
+    
+    #creates 5 radio buttons for the different degree types and sets the data type to String when returned
     self.varDegree = StringVar()
     R1 = Radiobutton(self, text="CS", variable=self.varDegree, value="CS")
     R1.pack(side=TOP, anchor=W)
@@ -37,9 +39,11 @@ class Home(Frame):
     R5.pack(side=TOP, anchor=W)
 
   def create_yearOfStudy(self):
+    # this will create a label in the position stated in the lblYear.pack
     lblYear = Label(self, text="Current Year of Study:")
     lblYear.pack(side=TOP, padx=20, pady=20)
 
+    #creates 4 radio buttons for the different Years of Study and sets the data type to String when returned
     self.varYear = StringVar()
     R1 = Radiobutton(self, text="Year1", variable=self.varYear, value="Year1")
     R1.pack(side=TOP, anchor=W)
@@ -52,9 +56,10 @@ class Home(Frame):
     R4.pack(side=TOP, anchor=W)
 
   def get_number(self):
+    #Creates a label for the student number and packs it in the frame
     lblNumber = Label(self, text="Number:")
     lblNumber.pack()
-
+    
     self.userNumber = IntVar()
     userNumber = Entry(self, textvariable=self.userNumber)
     userNumber.pack()
