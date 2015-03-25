@@ -22,7 +22,7 @@ class CalResults:
 		numMax = 1
 		compare = 0
 		for i in range(0,3):
-			if(occurance[i] > compare):
+			if occurance[i] > compare:
 				compare = occurance[i]
 				numMax = i
 
@@ -31,11 +31,11 @@ class CalResults:
 	
 	def selectTypeHoneyStlye(self, number):
 		if number == 1:
-			return "Reflector"
-		elif number == 2:
-			return "Pragmatist"
-		elif number == 3:
 			return "Theorist"
+		elif number == 2:
+			return "Reflector" 
+		elif number == 3:
+			return "Pragmatist" 
 		else:
 			return "Activist"
 
@@ -60,7 +60,7 @@ class CalResults:
 ##### test code ######
 
 def main():
-	test1 = CalResults([2,1,1,3,3,3,3,4], "H&M")
+	test1 = CalResults([1,1,2,2,3], "Honey & Mumford")
 	print(test1.getType())
 	test2 = CalResults([2,4,4,2,1,2,2,1], "VARK")
 	print(test2.getType())
