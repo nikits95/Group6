@@ -90,6 +90,9 @@ class VARKQ(Frame):
 			self.number = 6	
 		elif number == 6:
 			return True
+	
+	def clearResults(self):
+		VARKQ.results = []
 
 ##### test code ######
 

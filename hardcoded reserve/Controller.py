@@ -122,6 +122,7 @@ class Controller(Frame):
 		self.results.destroy()
 		self.homepage = Home(self.cont_frame)
 		self.homepage.pack()
+		Controller.learningTypeStoreage = []
 		self.root.geometry("800x500")
 		self.btnHome["text"] = "Submit"
 		self.btnHome["command"] = lambda: self.gettingHomeData(self.homepage)

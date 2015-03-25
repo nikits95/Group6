@@ -93,6 +93,10 @@ class honeyMumford(Frame):
 		elif number == 6:
 			return True
 
+	def clearResults(self):
+		honeyMumford.results = []
+		
+
 ##### test code ######
 
 def test_button(app):
