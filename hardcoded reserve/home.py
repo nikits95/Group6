@@ -13,6 +13,8 @@ class Home(Frame):
 
   def get_information(self):
     try:
+      if self.userNumber.get() == 0:
+        tkinter.messagebox.showinfo("For your information", "You have entered 0, you will be treated as an anonymous student")
       return int(self.userNumber.get()),str(self.varYear.get()), str(self.varDegree.get())
     except ValueError:
       tkinter.messagebox.showinfo("Invlaid Number", "Please ensure student number is only numbers",icon="warning")
