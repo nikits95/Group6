@@ -1,5 +1,5 @@
 from tkinter import *
-from Home import *
+from home import *
 from honeyMumford import *
 from CalResults import *
 from displayStyle import *
