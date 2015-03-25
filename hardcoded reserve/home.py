@@ -12,10 +12,13 @@ class Home(Frame):
 
 
   def get_information(self):
+  #this will prompt the student if they have left the student number as a 0 with the correct messagebox
     try:
       if self.userNumber.get() == 0:
         tkinter.messagebox.showinfo("For your information", "You have entered 0, you will be treated as an anonymous student")
+  #this will return all the information that will be stored in the storage.py
       return int(self.userNumber.get()),str(self.varYear.get()), str(self.varDegree.get())
+  #this piece of code will return an error message if the student inputs anything but numbers into the student number textbox in the frame 
     except ValueError:
       tkinter.messagebox.showinfo("Invlaid Number", "Please ensure student number is only numbers",icon="warning")
 
