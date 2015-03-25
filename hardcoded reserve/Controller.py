@@ -1,5 +1,5 @@
 from tkinter import *
-from home import *
+from Home import *
 from honeyMumford import *
 from CalResults import *
 from displayStyle import *
@@ -7,7 +7,6 @@ from VARKQ import *
 from storage import *
 from admin import *
 import tkinter.messagebox
-
 
 class Controller(Frame):
 
@@ -86,11 +85,13 @@ class Controller(Frame):
 				selectedFrame.changeQuestion(6)
 				self.number +=1
 
-				self.honeyResults = selectedFrame.getResults()
+				self.frameResults = selectedFrame.getResults()
 				self.update()
-				selectedFrame.destroy()
 				
-				self.questionnaireResults = CalResults(self.honeyResults, questionnaireType)
+				selectedFrame.destroy()
+				#print(self.frameResults)
+				self.questionnaireResults = CalResults(self.frameResults, questionnaireType)
+				selectedFrame.clearResults()
 				self.gettingInformation(self.questionnaireResults, questionnaireType,numberCompleted)
 
 	def gettingInformation(self,curretnFrame, questionnaireType, completedQuestionnaire):
@@ -119,7 +120,13 @@ class Controller(Frame):
 
 	def sendHome(self):
 		self.results.destroy()
-		self.quit()
+		self.homepage = Home(self.cont_frame)
+		self.homepage.pack()
+		self.root.geometry("800x500")
+		self.btnHome["text"] = "Submit"
+		self.btnHome["command"] = lambda: self.gettingHomeData(self.homepage)
+		self.btnLec = Button(self.cont_frame, text="lecturer Area", command= self.lecturePage)
+		self.btnLec.pack(side=BOTTOM)
 		self.update()
 		
 def main():
