@@ -20,6 +20,7 @@ class admin(Frame):
     lblDegree.pack()
 
     self.varDegree = StringVar()
+    #creates all the radiobuttons for degree type
 
     R1 = Radiobutton(self, text="CS", variable=self.varDegree, value="CS")
     R1.pack(side=TOP, anchor=W)
@@ -38,6 +39,7 @@ class admin(Frame):
     lblYear.pack()
 
     self.varYear = StringVar()
+    #creates all the radiobuttons for current year
     R1 = Radiobutton(self, text="Year1", variable=self.varYear, value="Year1")
     R1.pack(side=TOP, anchor=W)
     R1.select()
@@ -48,17 +50,22 @@ class admin(Frame):
     R4 = Radiobutton(self, text="Year4", variable= self.varYear, value="Year4") 
     R4.pack(side=TOP, anchor=W)
 
+
+  #the follwing 3 methods will create buttons for the frame
   def createVARKButton(self):
+    #this button takes the user options from above radiobuttons and provides feedback to the user via a messagebox
     btn = Button(self, text="Get VARK analysis", command= lambda: self.getVARKData(self.varYear.get(), self.varDegree.get()))
     btn.pack(side=BOTTOM, anchor=N, fill=X)
 
   def createHMButton(self):
+    #this button takes the user options from above radiobuttons and provides feedback to the user via a messagebox
     btn = Button(self, text="Get Honey and Mumford analysis", command= lambda: self.getHMData(self.varYear.get(), self.varDegree.get()))
     btn.pack(side=BOTTOM, anchor=N, fill=X)
     lblInfo = Label(self,text="Please select a year and degree type and\n press one of the following buttons to show data:")
     lblInfo.pack(side=BOTTOM, anchor=N)
 
   def createALLButton(self):
+    #this button when pressed will display all the results from the questionnares and give feedback
     btn = Button(self, text="Get analysis on everything", command= lambda: self.getALLData(self.varYear.get(), self.varDegree.get()))
     btn.pack(side=BOTTOM, anchor=N, fill=X)
     blInfo = Label(self,text="Please press this button to get all the\n information from all students")
