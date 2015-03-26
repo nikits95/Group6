@@ -5,12 +5,16 @@ import os
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-def myplotcode(data):
+def myplotcode(data, Gtype):
     f = Figure(figsize=(5,4), dpi=100)
     ax = f.add_subplot(111)
 
     ## the data
-    N = 8
+    N = 0
+    if Gtype == 0:
+        N = 8
+    else:
+        N = 4
     results = []
     V, A, R, K, Ref, Pra, The, Act = 0, 0, 0, 0, 0, 0, 0, 0
 
@@ -32,14 +36,16 @@ def myplotcode(data):
         else:
             Act = Act + 1
 
-    results.append(V)
-    results.append(A)
-    results.append(R)
-    results.append(K)
-    results.append(Ref)
-    results.append(Pra)
-    results.append(The)
-    results.append(Act)
+    if Gtype == 0 or Gtype == 1:
+        results.append(V)
+        results.append(A)
+        results.append(R)
+        results.append(K)
+    if Gtype == 0 or Gtype == 2:
+        results.append(Ref)
+        results.append(Pra)
+        results.append(The)
+        results.append(Act)
 
     ## necessary variables
     ind = np.arange(N)                # the x locations for the groups
@@ -55,14 +61,19 @@ def myplotcode(data):
     ax.set_ylim(0, max(results) + 5)
     ax.set_ylabel('Students')
     ax.set_title('Overall results')
-    xTickMarks = ["V", "A", "R", "K", "Ref", "Pra", "The", "Act"]
+    if Gtype == 0:
+        xTickMarks = ["V", "A", "R", "K", "Ref", "Pra", "The", "Act"]
+    if Gtype == 1:
+        xTickMarks = ["V", "A", "R", "K"]
+    if Gtype == 2: 
+        xTickMarks = ["Ref", "Pra", "The", "Act"]
     ax.set_xticks(ind+width)
     xtickNames = ax.set_xticklabels(xTickMarks)
 
     return f
 
 class mygui(Frame):
-    def __init__(self, parent):
+    def __init__(self, parent, Gtype):
         Frame.__init__(self, parent)
         self.parent = parent
 
@@ -72,9 +83,8 @@ class mygui(Frame):
         file.close()
 
 
-        self.fig = myplotcode(self.data_table)
+        self.fig = myplotcode(self.data_table, Gtype)
         self.canvas = FigureCanvasTkAgg(self.fig, master=parent)
-        self.canvas.show()
 
         self.canvas.get_tk_widget().pack()
         self.pack(fill=BOTH, expand=1)
@@ -84,8 +94,9 @@ class mygui(Frame):
 
 def main():
     root = Tk()
-    app = mygui(root)
+    app = mygui(root,0)
+
     root.mainloop()
 
-if __name__ == "__main__":
+if __name__ =="__main__":
     main()

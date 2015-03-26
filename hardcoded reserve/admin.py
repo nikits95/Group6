@@ -2,6 +2,8 @@ from tkinter import *
 from storage import *
 import tkinter.messagebox
 
+
+
 class admin(Frame):
   def __init__(self,master):
     Frame.__init__(self,master)
@@ -14,7 +16,6 @@ class admin(Frame):
     self.createALLButton()
 
   def create_degree_program(self):
-    #creates the radiobuttons and labels for the interface for degree program
     lblDegree = Label(self, text="Select student degree:")
     lblDegree.pack()
 
@@ -33,7 +34,6 @@ class admin(Frame):
     R5.pack(side=TOP, anchor=W)
   
   def create_yearOfStudy(self):
-    #creates the radiobuttons for the interface for year
     lblYear = Label(self, text="Select year of study:")
     lblYear.pack()
 
@@ -48,7 +48,6 @@ class admin(Frame):
     R4 = Radiobutton(self, text="Year4", variable= self.varYear, value="Year4") 
     R4.pack(side=TOP, anchor=W)
 
-    #following three functions creates the buttons for the interface
   def createVARKButton(self):
     btn = Button(self, text="Get VARK analysis", command= lambda: self.getVARKData(self.varYear.get(), self.varDegree.get()))
     btn.pack(side=BOTTOM, anchor=N, fill=X)
@@ -69,18 +68,15 @@ class admin(Frame):
   def getVARKData(self, year, degreeType):
     a = storage()
     a.print_out_vark(year, degreeType)
-    #accesses the print_out_vark function in the storage.py file
 
 
   def getHMData(self, year, degreeType):
     a = storage()
     a.print_out_HM(year, degreeType)
-     #accesses the print_out_HM function in the storage.py file
 
   def getALLData(self, year, degreeType):
     a = storage()
-    a.print_out_ALL(year, degreeType) 
-    #accesses the print_out_ALL function in the storage.py file
+    a.print_out_ALL(year, degreeType)  
 
 			
 ##### test code ######
