@@ -60,12 +60,14 @@ def myplotcode(data, Gtype):
     ax.set_xlim(-width,len(ind)+width)
     ax.set_ylim(0, max(results) + 5)
     ax.set_ylabel('Students')
-    ax.set_title('Overall results')
     if Gtype == 0:
+        ax.set_title('Overall results')
         xTickMarks = ["V", "A", "R", "K", "Ref", "Pra", "The", "Act"]
     if Gtype == 1:
+        ax.set_title('VARK results')
         xTickMarks = ["V", "A", "R", "K"]
     if Gtype == 2: 
+        ax.set_title('H&M results')
         xTickMarks = ["Ref", "Pra", "The", "Act"]
     ax.set_xticks(ind+width)
     xtickNames = ax.set_xticklabels(xTickMarks)
