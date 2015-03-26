@@ -4,10 +4,12 @@ class CalResults:
 	def __init__(self, data, learningType):
 		self.data = data
 		self.type = learningType
+		#calls relevent methods for calculating results
 		if learningType == "Honey & Mumford":
 			results = self.calculateOccurance(data)
 			self.learningType = self.selectTypeHoneyStlye(results)
 		else:
+			#VARK part
 			results = self.calculateOccurance(data)
 			self.learningType = self.selectTypeVARKStlye(results)	
 
@@ -15,6 +17,8 @@ class CalResults:
 		return self.learningType
 
 	def calculateOccurance(self, data):
+		#this function calculates the results by counting 
+		#the number of times it occurs
 		occurance = []
 		for i in [1,2,3,4]:
 			results = self.numberCounter(data,i)
@@ -26,10 +30,11 @@ class CalResults:
 				compare = occurance[i]
 				numMax = i
 
-		typeOfLearningStyle = numMax+1
+		typeOfLearningStyle = numMax+1 # 1 is added as list starts at 0 where the results start at 1 
 		return typeOfLearningStyle
 	
 	def selectTypeHoneyStlye(self, number):
+		#converts to the learning style
 		if number == 1:
 			return "Theorist"
 		elif number == 2:
@@ -40,8 +45,9 @@ class CalResults:
 			return "Activist"
 
 	def selectTypeVARKStlye(self, number):
+		#converts to the learning style
 		if number == 1:
-			return "Visual" #will change them to return after testing
+			return "Visual" 
 		elif number == 2:
 			return "Kinesthetic"
 		elif number == 3:
