@@ -55,10 +55,14 @@ class admin(Frame):
   def createHMButton(self):
     btn = Button(self, text="Get Honey and Mumford analysis", command= lambda: self.getHMData(self.varYear.get(), self.varDegree.get()))
     btn.pack(side=BOTTOM, anchor=N, fill=X)
+    lblInfo = Label(self,text="Please select a year and degree type and\n press one of the following buttons to show data:")
+    lblInfo.pack(side=BOTTOM, anchor=N)
 
   def createALLButton(self):
     btn = Button(self, text="Get analysis on everything", command= lambda: self.getALLData(self.varYear.get(), self.varDegree.get()))
     btn.pack(side=BOTTOM, anchor=N, fill=X)
+    blInfo = Label(self,text="Please press this button to get all the\n information from all students")
+    blInfo.pack(side=BOTTOM, anchor=N, ipadx=20)
 
 
   def getVARKData(self, year, degreeType):
