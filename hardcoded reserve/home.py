@@ -63,6 +63,7 @@ class Home(Frame):
     lblNumber = Label(self, text="Number:")
     lblNumber.pack()
     
+    #this will return anything from the stduent number text box as an integer and pack it in the frame
     self.userNumber = IntVar()
     userNumber = Entry(self, textvariable=self.userNumber)
     userNumber.pack()
