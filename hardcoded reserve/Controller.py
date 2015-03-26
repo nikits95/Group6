@@ -6,6 +6,7 @@ from displayStyle import *
 from VARKQ import *
 from storage import *
 from admin import *
+from chartGenerator import *
 import tkinter.messagebox
 
 class Controller(Frame):
@@ -34,6 +35,9 @@ class Controller(Frame):
 			self.homepage.destroy()
 			self.btnLec["command"] = self.goback
 			self.btnLec["text"] = "Go Back"
+			self.btnMoreGraphical = Button(self.cont_frame, text="Overall Results Graph", command=self.makeGraph)
+			self.btnMoreGraphical.pack(side=BOTTOM)
+
 			self.adminPage = admin(self.cont_frame)
 			self.adminPage.pack()
 			self.btnHome.destroy()
@@ -41,10 +45,33 @@ class Controller(Frame):
 		else:
 			pass
 
+	def makeGraph(self):
+		self.btnLec.destroy()
+		self.adminPage.destroy()
+		self.btnMoreGraphical["command"] = self.returnAnalysis
+		self.btnMoreGraphical["text"] = "Back to analysis"
+		self.graphInter = mygui(self.cont_frame)
+		self.graphInter.pack()
+		self.update()
+
+	def returnAnalysis(self):
+		self.graphInter.stopGraph()
+		self.graphInter.destroy()
+		self.btnMoreGraphical["command"] = self.makeGraph
+		self.btnMoreGraphical["text"] = "Overall Results Graph"
+		self.btnLec = Button(self.cont_frame, text="Go back", command= self.goback)
+		self.btnLec.pack(side=BOTTOM)
+		
+		self.adminPage = admin(self.cont_frame)
+		self.adminPage.pack()
+		self.update()
+
+
 	def goback(self):
 		self.adminPage.destroy()
 		self.btnLec["command"] = self.lecturePage
 		self.btnLec["text"] = "lecturer Area"
+		self.btnMoreGraphical.destroy()
 		self.homepage = Home(self.cont_frame)
 		self.homepage.pack()
 		self.btnHome = Button(self.cont_frame, text="Submit", command= lambda: self.gettingHomeData(self.homepage))
