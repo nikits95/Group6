@@ -61,7 +61,7 @@ class storage:
 
         n = visualAns + audalAns + readingAns + kineticAns
 
-        caption = "There were " + str(n) + " Students who took the questionnaire where:"
+        caption = "There were " + str(n) + " Students from " + degreeType + " who took the questionnaire from "+ str(year)
         tkinter.messagebox.showinfo("Analysis", caption + "\n" + "\n" +  visual + "\n" + aural + "\n" + reading + "\n" + kinetic )
 
     def print_out_ALL(self, year, degreeType):
@@ -104,7 +104,6 @@ class storage:
             sAns = "Student"
         else:
             sAns = "Students" 
-
 
                         
         reflector= "Reflector: " + str(refAns) + " " + sRef
@@ -151,7 +150,7 @@ class storage:
 
         n = visualAns + audalAns + readingAns + kineticAns
 
-        c = "There were " + str(n) + " Students who took the questionnaire where:"
+        c = "There were " + str(n) + " Students in total, who took the questionnaire:"
 
         tkinter.messagebox.showinfo("Analysis",  c + "\n" + "\n" +visual + "\n" + aural + "\n" + reading + "\n" + kinetic +"\n" + "\n" + reflector + "\n" + pragmatist + "\n" + theorist + "\n" + activist)
 
@@ -200,7 +199,7 @@ class storage:
         
         n = refAns + pragAns + theoAns + actAns
 
-        caption = "There were " + str(n) + " Students who took the questionnaire where:"
+        caption = "There were " + str(n) + " Students from " + degreeType + " who took the questionnaire from "+ str(year)
         
         tkinter.messagebox.showinfo("Analysis", caption + "\n" + "\n" +  reflector + "\n" + pragmatist + "\n" + theorist + "\n" + activist)
 
@@ -220,12 +219,11 @@ class storage:
 
 def main():
     data = storage()
-    #data.add_data(1998999, "BIS", "Year1", "Pragmatic", "Visual")
-    #data.add_data(1998999, "Joints", "Year1", "Activist", "Kinetic") 
-    #data.add_data(1998999, "CS", "Year2", "Pragmatic", "Aural")
-    #data.add_data(1998999, "CS", "Year2", "Pragmatic", "Visual")  
-    #data.add_data(1998999, "CS", "Year3", "Pragmatic", "Visual")  
-    #data.add_data(1998999, "Joints", "Year1", "Pragmatic", "Visual") 
+    #data.add_data(2435436, "Joints", "Year1", "Pragmatist", "Visual")
+    #data.add_data(1998999, "CS", "Year2", "Theorist", "Reading")
+    #data.add_data(1998999, "CS with", "Year3", "Reflector", "Reading") 
+    #data.add_data(1995399, "CS", "Year1", "Theorist", "Visual") 
+    #data.add_data(1922599, "CS", "Year3", "Activist", "Aural")  
     data.print_out_data()
 
 if __name__ == '__main__':
