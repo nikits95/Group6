@@ -68,15 +68,18 @@ class admin(Frame):
   def getVARKData(self, year, degreeType):
     a = storage()
     a.print_out_vark(year, degreeType)
+    #accesses the print_out_vark function in the storage.py file
 
 
   def getHMData(self, year, degreeType):
     a = storage()
     a.print_out_HM(year, degreeType)
+     #accesses the print_out_HM function in the storage.py file
 
   def getALLData(self, year, degreeType):
     a = storage()
-    a.print_out_ALL(year, degreeType)  
+    a.print_out_ALL(year, degreeType) 
+    #accesses the print_out_ALL function in the storage.py file
 
 			
 ##### test code ######
