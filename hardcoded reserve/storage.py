@@ -23,6 +23,7 @@ class storage:
         audalAns = 0
         readingAns = 0
         kineticAns = 0
+        #values of students per VARK learning style initialised as 0
         
         for r in self.data_table:
             if r[2] == degreeType and r[1] == year :  
@@ -34,6 +35,9 @@ class storage:
                     readingAns = readingAns + 1
                 elif r[4] == "Kinesthetic":
                     kineticAns = kineticAns + 1
+                #This chacks if the degree is equal to what the user wants and if the year is equal to what the user wants
+                #it then increments the learning style by 1 if the student belongs in it
+                
         if visualAns == 1:
             s = "Student"
         else:
@@ -58,6 +62,8 @@ class storage:
         aural = "Aural: " + str(audalAns) + " " + st
         reading = "Reading: " + str(readingAns) + " " + stu 
         kinetic = "Kinesthetic: " + str(kineticAns) + " " + stud
+        #This arranges the final analysis to be readable by the user
+        
 
         n = visualAns + audalAns + readingAns + kineticAns
 
@@ -147,6 +153,7 @@ class storage:
         aural = "Aural: " + str(audalAns) + " " + st
         reading = "Reading: " + str(readingAns) + " " + stu 
         kinetic = "Kinesthetic: " + str(kineticAns) + " " + stud
+        #This arranges the final analysis to be readable by the user
 
         n = visualAns + audalAns + readingAns + kineticAns
 
@@ -159,6 +166,7 @@ class storage:
         pragAns = 0
         theoAns = 0
         actAns = 0
+        #values of students per HM learning style initialised as 0
 
         for r in self.data_table:
             if r[2] == degreeType and r[1] == year :  
@@ -170,6 +178,8 @@ class storage:
                     theoAns = theoAns + 1
                 elif r[3] == "Activist":
                     actAns = actAns + 1
+                #This chacks if the degree is equal to what the user wants and if the year is equal to what the user wants
+                #it then increments the learning style by 1 if the student belongs in it            
 
     
         if refAns == 1:
