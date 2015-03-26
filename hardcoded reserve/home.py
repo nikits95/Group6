@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter.messagebox
 
 class Home(Frame):
+  #this is the code that calls all the other functions in the file 
   def __init__(self,master):
     Frame.__init__(self,master)
     alable = Label(self,text="Home")
