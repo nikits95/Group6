@@ -41,6 +41,8 @@ class VARKQ(Frame):
 		return VARKQ.results
 
 	def changeQuestion(self, number):
+		#this function counts the number of times the student clicks the submit button
+		#It will then make the question, answers and the values will be change
 		answer = self.varQ1.get()
 		VARKQ.results.append(answer)
 		if number == 2:
@@ -88,9 +90,11 @@ class VARKQ(Frame):
 			self.R4Q1["value"] = 3
 			self.number = 6	
 		elif number == 6:
+			#this part is used to stop bugs
 			return True
 	
 	def clearResults(self):
+		#clears the results
 		VARKQ.results = []
 
 ##### test code ######
