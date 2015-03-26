@@ -6,16 +6,19 @@ class honeyMumford(Frame):
 	results = []
 
 	def __init__(self, master):
+		#calls the functions that the controller will need to run with the system
 		Frame.__init__(self, master)
 		self.pack()
 		self.createQuestion()
 		self.createQuitButton()
 
 	def createQuitButton(self):
+		#creates a button to quit the system early
 		btnQuit = Button(self, text="Quit", command=self.stopQuestionnaire)
 		btnQuit.pack(side=BOTTOM)
 
 	def stopQuestionnaire(self):
+		#creates a yes or no messagebox when the student wants to quit the questionnaire 
 		if tkinter.messagebox.askyesno("You are about to quit!", "Are you sure you want to quit?", icon="warning"):
 			quit()
 		else:
