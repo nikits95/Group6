@@ -22,7 +22,6 @@ class VARKQ(Frame):
 			pass
 
 	def createQuestion(self): #1 =Visu 2=Kinesthetic 3=Aural 4=Reading
-		self.varQ1 = IntVar
 		self.question1 = Label(self,text="When using a brand new IDE or any other software to allow coding, do you understand it by:")
 		self.question1.pack(side=TOP, anchor=W, padx=20, pady=20)
 
