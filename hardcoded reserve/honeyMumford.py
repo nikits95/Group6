@@ -49,6 +49,8 @@ class honeyMumford(Frame):
 	def changeQuestion(self, number):
 		answer = self.varQ1.get()
 		honeyMumford.results.append(answer)
+		#Counts the number of times the student clicks the submit button 
+		#then changes the values, questions and answers for each one
 		if number == 2:
 			self.R1Q1.select()
 			self.question1["text"] = "When given a task to develop a piece of software for an item of coursework, do you find it best to:"
@@ -99,6 +101,7 @@ class honeyMumford(Frame):
 			return True
 
 	def clearResults(self):
+		#resets the list of data
 		honeyMumford.results = []
 		
 
