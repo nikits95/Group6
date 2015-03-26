@@ -3,10 +3,11 @@ import tkinter.messagebox
 numberForTest = [1,2,3,4,5]
 
 class honeyMumford(Frame):
+	# this is an empty list that will store the results that the controller can use
 	results = []
 
 	def __init__(self, master):
-		#calls the functions that the controller will need to run with the system
+		#calls the functions that the controller will need to run in the system
 		Frame.__init__(self, master)
 		self.pack()
 		self.createQuestion()
@@ -25,11 +26,11 @@ class honeyMumford(Frame):
 			pass
 		
 	def createQuestion(self):
-		self.varQ1 = IntVar
+		#creates a label with the question inside it and packs it in the frame
 		self.question1 = Label(self,text="When Learning What an Object is in object orientated programming do you prefer :")
 		self.question1.pack(side=TOP, anchor=W, padx=20, pady=20)
 
-		#creating question1 answers
+		#creates question1 answers with radio buttons and returns the values as integers
 		self.varQ1 = IntVar()
 		self.R1Q1 = Radiobutton(self, text="To role-play a scenario", variable=self.varQ1, value=4)#(Activist)
 		self.R1Q1.pack(anchor=W)
@@ -42,6 +43,7 @@ class honeyMumford(Frame):
 		self.R4Q1.pack(anchor=W)
 
 	def getResults(self):
+		#function to return the results of the Honey and Mumford questionnaire
 		return honeyMumford.results
 
 	def changeQuestion(self, number):
