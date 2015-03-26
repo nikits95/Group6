@@ -110,7 +110,7 @@ class storage:
         reflector= "Reflector: " + str(refAns) + " " + sRef
         pragmatist = "Pragmatist: " +  str(pragAns) + " " + sPrag
         theorist = "Theorist: " + str(theoAns) + " " + sTheo
-        activist = "Activist " + str(kineticAns) + " " + sAns
+        activist = "Activist " + str(actAns) + " " + sAns
         n = reflector + pragmatist + theorist + activist
 
         
